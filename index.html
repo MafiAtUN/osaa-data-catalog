@@ -52,6 +52,18 @@
                         </div>
                     </div>
 
+                    <div class="welcome-search">
+                        <div class="search-container">
+                            <input type="text" id="homeSearchInput" placeholder="Search indicators, reports, or data sources..." class="search-input">
+                            <button type="button" id="homeSearchBtn" class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="search-results" id="homeSearchResults" style="display: none;">
+                            <!-- Search results will be populated here -->
+                        </div>
+                    </div>
+
                     <div class="welcome-actions">
                         <a href="indicators.html" class="action-btn primary">
                             <i class="fas fa-chart-line"></i>
@@ -61,6 +73,10 @@
                             <i class="fas fa-file-alt"></i>
                             View Reports
                         </a>
+                        <button class="action-btn tertiary" onclick="showAddForm()">
+                            <i class="fas fa-plus"></i>
+                            Add Indicator
+                        </button>
                     </div>
                 </div>
             </div>
@@ -128,6 +144,70 @@
 
     <div id="footer-placeholder"></div>
 
+    <!-- Add Indicator Modal -->
+    <div id="addModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Indicator</h2>
+                <span class="close" onclick="hideAddForm()">&times;</span>
+            </div>
+            <form id="addIndicatorForm" class="add-form">
+                <div class="form-group">
+                    <label for="indicatorName">Indicator Name *</label>
+                    <input type="text" id="indicatorName" name="indicatorName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="indicatorCluster">Cluster *</label>
+                    <select id="indicatorCluster" name="indicatorCluster" required>
+                        <option value="">Select Cluster</option>
+                        <option value="financing">Financing for Development</option>
+                        <option value="conflict">Addressing Drivers of Conflict</option>
+                        <option value="democracy">Democracy, Resilience, and Human Capital</option>
+                        <option value="sti">Science, Technology, and Innovation</option>
+                        <option value="industrialization">Industrialization and AfCFTA</option>
+                        <option value="energy">Sustainable Energy and Climate Change</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="indicatorTheme">Theme</label>
+                    <input type="text" id="indicatorTheme" name="indicatorTheme" placeholder="e.g., Tax Revenue, Governance">
+                </div>
+                
+                <div class="form-group">
+                    <label for="indicatorDescription">Description *</label>
+                    <textarea id="indicatorDescription" name="indicatorDescription" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="indicatorSource">Source *</label>
+                    <input type="text" id="indicatorSource" name="indicatorSource" required placeholder="e.g., World Bank, IMF">
+                </div>
+                
+                <div class="form-group">
+                    <label for="indicatorUrl">Source URL</label>
+                    <input type="url" id="indicatorUrl" name="indicatorUrl" placeholder="https://...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="indicatorMetadata">Metadata</label>
+                    <textarea id="indicatorMetadata" name="indicatorMetadata" rows="2" placeholder="Data collection method, frequency, etc."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="indicatorRemarks">Remarks</label>
+                    <textarea id="indicatorRemarks" name="indicatorRemarks" rows="2" placeholder="Additional notes or context"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="hideAddForm()">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Indicator</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         // Load shared components
         function loadSharedComponents() {
@@ -147,7 +227,204 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             loadSharedComponents();
+            setupHomePageFunctionality();
         });
+
+        // Setup home page specific functionality
+        function setupHomePageFunctionality() {
+            // Load data
+            loadIndicators();
+            loadReports();
+            
+            // Setup search functionality
+            const homeSearchInput = document.getElementById('homeSearchInput');
+            const homeSearchBtn = document.getElementById('homeSearchBtn');
+            
+            if (homeSearchInput) {
+                homeSearchInput.addEventListener('input', handleHomeSearch);
+            }
+            if (homeSearchBtn) {
+                homeSearchBtn.addEventListener('click', handleHomeSearch);
+            }
+            
+            // Setup add indicator form
+            const addForm = document.getElementById('addIndicatorForm');
+            if (addForm) {
+                addForm.addEventListener('submit', handleAddIndicator);
+            }
+        }
+
+        // Load indicators from data.js
+        function loadIndicators() {
+            if (typeof window.indicatorsData !== 'undefined') {
+                window.indicators = window.indicatorsData || [];
+            }
+        }
+
+        // Load reports from reports-data.js
+        function loadReports() {
+            if (typeof window.reportsData !== 'undefined') {
+                window.reports = window.reportsData || [];
+            }
+        }
+
+        // Handle home page search
+        function handleHomeSearch() {
+            const searchTerm = document.getElementById('homeSearchInput').value.toLowerCase();
+            const resultsContainer = document.getElementById('homeSearchResults');
+            
+            if (searchTerm.length < 2) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+            
+            const results = searchAllData(searchTerm);
+            displaySearchResults(results, resultsContainer);
+        }
+
+        // Search across indicators and reports
+        function searchAllData(searchTerm) {
+            const results = {
+                indicators: [],
+                reports: []
+            };
+            
+            // Search indicators
+            if (window.indicators) {
+                results.indicators = window.indicators.filter(indicator => 
+                    indicator.name.toLowerCase().includes(searchTerm) ||
+                    indicator.theme.toLowerCase().includes(searchTerm) ||
+                    indicator.description.toLowerCase().includes(searchTerm) ||
+                    indicator.cluster.toLowerCase().includes(searchTerm) ||
+                    indicator.source.toLowerCase().includes(searchTerm)
+                ).slice(0, 5); // Limit to 5 results
+            }
+            
+            // Search reports
+            if (window.reports) {
+                results.reports = window.reports.filter(report => 
+                    report.title.toLowerCase().includes(searchTerm) ||
+                    report.summary.toLowerCase().includes(searchTerm) ||
+                    report.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                ).slice(0, 3); // Limit to 3 results
+            }
+            
+            return results;
+        }
+
+        // Display search results
+        function displaySearchResults(results, container) {
+            const totalResults = results.indicators.length + results.reports.length;
+            
+            if (totalResults === 0) {
+                container.innerHTML = '<div class="search-no-results">No results found</div>';
+                container.style.display = 'block';
+                return;
+            }
+            
+            let html = '<div class="search-results-header">';
+            html += `<h4>Search Results (${totalResults})</h4>`;
+            html += '</div>';
+            
+            // Display indicators
+            if (results.indicators.length > 0) {
+                html += '<div class="search-section">';
+                html += '<h5><i class="fas fa-chart-line"></i> Indicators</h5>';
+                results.indicators.forEach(indicator => {
+                    html += `<div class="search-item" onclick="goToIndicators('${indicator.cluster}')">`;
+                    html += `<div class="search-item-title">${indicator.name}</div>`;
+                    html += `<div class="search-item-meta">${getClusterDisplayName(indicator.cluster)} • ${indicator.source}</div>`;
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+            
+            // Display reports
+            if (results.reports.length > 0) {
+                html += '<div class="search-section">';
+                html += '<h5><i class="fas fa-file-alt"></i> Reports</h5>';
+                results.reports.forEach(report => {
+                    html += `<div class="search-item" onclick="goToReports()">`;
+                    html += `<div class="search-item-title">${report.title}</div>`;
+                    html += `<div class="search-item-meta">${report.year} • ${report.indicators.length} indicators</div>`;
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+            
+            container.innerHTML = html;
+            container.style.display = 'block';
+        }
+
+        // Helper function to get cluster display name
+        function getClusterDisplayName(cluster) {
+            const clusterNames = {
+                'financing': 'Financing for Development',
+                'conflict': 'Addressing Drivers of Conflict',
+                'democracy': 'Democracy, Resilience, and Human Capital',
+                'sti': 'Science, Technology, and Innovation',
+                'industrialization': 'Industrialization and AfCFTA',
+                'energy': 'Sustainable Energy and Climate Change'
+            };
+            return clusterNames[cluster] || cluster;
+        }
+
+        // Navigation functions
+        function goToIndicators(cluster = '') {
+            if (cluster) {
+                window.location.href = `indicators.html?cluster=${cluster}`;
+            } else {
+                window.location.href = 'indicators.html';
+            }
+        }
+
+        function goToReports() {
+            window.location.href = 'reports.html';
+        }
+
+        // Add indicator functions
+        function showAddForm() {
+            document.getElementById('addModal').style.display = 'block';
+        }
+
+        function hideAddForm() {
+            document.getElementById('addModal').style.display = 'none';
+            document.getElementById('addIndicatorForm').reset();
+        }
+
+        function handleAddIndicator(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const newIndicator = {
+                id: Date.now().toString(),
+                name: formData.get('indicatorName'),
+                cluster: formData.get('indicatorCluster'),
+                theme: formData.get('indicatorTheme') || '',
+                description: formData.get('indicatorDescription'),
+                source: formData.get('indicatorSource'),
+                url: formData.get('indicatorUrl') || '',
+                metadata: formData.get('indicatorMetadata') || '',
+                remarks: formData.get('indicatorRemarks') || ''
+            };
+            
+            // Add to indicators array
+            if (window.indicators) {
+                window.indicators.push(newIndicator);
+            }
+            
+            // Hide modal and show success
+            hideAddForm();
+            alert('Indicator added successfully! It will be available after the page is refreshed.');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('addModal');
+            if (event.target === modal) {
+                hideAddForm();
+            }
+        }
     </script>
 </body>
 </html>

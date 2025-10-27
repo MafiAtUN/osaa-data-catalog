@@ -1,140 +1,125 @@
 # UN OSAA Data Catalog
 
-A comprehensive data catalog for the United Nations Office of the Special Adviser on Africa (UN OSAA), designed to organize and provide access to key development indicators across six thematic clusters.
+A comprehensive data tracking and catalog system created for the **United Nations Office of the Special Adviser on Africa (UN OSAA)** to monitor data usage across published reports and serve as a centralized data catalog for Africa's sustainable development agenda.
 
-## Overview
+## 🎯 Purpose
 
-This data catalog serves as a centralized repository for development indicators relevant to Africa's sustainable development agenda. It organizes data into six thematic clusters that align with UN OSAA's strategic focus areas.
+This system serves two primary functions:
+1. **Data Tracking**: Monitor and catalog all data sources and indicators used in UN OSAA reports
+2. **Data Catalog**: Provide easy access to development indicators across six thematic clusters
 
-## Thematic Clusters
+## 📊 Current Status
+
+- **8+ Reports** tracked with comprehensive data sources
+- **260+ Indicators** across all thematic areas
+- **50+ Data Sources** from international organizations
+- **6 Thematic Clusters** covering Africa's development priorities
+
+## 🏗️ Thematic Clusters
 
 ### 1. Financing for Development
-- **Theme**: Mobilizing and managing resources for Africa's sustainable development
-- **Focus Areas**: 
-  - Reversing illicit financial flows (IFFs) and promoting international tax cooperation
-  - Maximizing remittances as a source of development finance
-  - Addressing credit rating agency bias and expanding access to capital markets
+Mobilizing resources, reversing illicit financial flows, maximizing remittances, and expanding capital market access.
 
-### 2. Addressing Drivers of Conflict for Sustainable Development
-- **Theme**: Linking peace, governance, and development
-- **Focus Areas**:
-  - Promoting inclusive institutional practices
-  - Tackling conflict economies through socioeconomic transformation
-  - Building cohesive and diverse societies
+### 2. Addressing Drivers of Conflict
+Linking peace, governance, and development through inclusive institutions and socioeconomic transformation.
 
 ### 3. Democracy, Resilience, and Human Capital
-- **Theme**: Strengthening governance, inclusion, and social protection
-- **Focus Areas**:
-  - Centering human capital in policy-making
-  - Enhancing participation of women and youth
-  - Protecting vulnerable groups (children, refugees, minorities)
+Strengthening governance, inclusion, and social protection with focus on women, youth, and vulnerable groups.
 
 ### 4. Science, Technology, and Innovation (STI)
-- **Theme**: Leveraging technology for Africa's transformation
-- **Focus Areas**:
-  - Advancing post-COVID recovery through science and innovation
-  - Promoting sustainability via STI
-  - Overcoming intellectual-property barriers
+Leveraging technology for Africa's transformation, post-COVID recovery, and sustainability.
 
 ### 5. Industrialization, Demographic Dividend, and AfCFTA
-- **Theme**: Accelerating structural transformation and trade integration
-- **Focus Areas**:
-  - Expanding Africa's role in global and regional value chains
-  - Harnessing the demographic dividend through education and jobs
-  - Implementing AfCFTA for industrial diversification
+Accelerating structural transformation, trade integration, and harnessing demographic dividends.
 
 ### 6. Sustainable Energy Future and Climate Change
-- **Theme**: Advancing green growth and climate resilience
-- **Focus Areas**:
-  - Investing in energy access and sustainability
-  - Balancing energy needs and climate commitments
-  - Expanding off-grid and renewable energy solutions
+Advancing green growth, climate resilience, and renewable energy solutions.
 
-## Features
+## 🔍 Key Features
 
-- **Search Functionality**: Search indicators by name, theme, or cluster
-- **Filter by Cluster**: Filter indicators by thematic cluster
-- **Add New Indicators**: Contribute new indicators through the web interface
-- **Comprehensive Metadata**: Each indicator includes source, methodology, and update frequency
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
-- **GitHub Integration**: Easy to maintain and update through GitHub
+- **Multi-Page Interface**: Home, Indicators, and Reports pages
+- **Advanced Search**: Search by indicator name, cluster, source, or tags
+- **Report Tracking**: Complete catalog of UN OSAA reports with data sources
+- **Filtering System**: Filter by cluster, source, tags, and year
+- **Responsive Design**: Works on all devices
+- **GitHub Integration**: Easy maintenance and updates
 
-## Data Structure
+## 📈 Tracked Reports
 
-Each indicator in the catalog includes:
+1. **NEPAD 2025** - SDG Financing (30+ indicators)
+2. **NEPAD 2022** - COVID-19 Recovery (23+ indicators)
+3. **NEPAD 2024** - Debt Solutions (14+ indicators)
+4. **NEPAD 2023** - Development Paradoxes (16+ indicators)
+5. **CoC 2025** - Peace & Development (21+ indicators)
+6. **CoC 2022** - Governance & Conflict (19+ indicators)
+7. **CoC 2023** - Peace & Development (19+ indicators)
+8. **CoC 2024** - Migration & Justice (24+ indicators)
 
-- **Indicator Name**: Clear, descriptive name
-- **Cluster**: Thematic cluster classification
-- **Theme**: Specific theme within the cluster
-- **Description**: Detailed description of what the indicator measures
-- **Source URL**: Link to the original data source
-- **Metadata**: Information about data source, methodology, and update frequency
-- **Remarks**: Additional notes and context
-
-## Usage
-
-### Viewing the Catalog
-1. Open `index.html` in a web browser
-2. Use the search bar to find specific indicators
-3. Use the cluster filter to focus on specific thematic areas
-4. Click on source URLs to access original data
-
-### Adding New Indicators
-1. Click the "Add Indicator" button
-2. Fill in the required information
-3. Submit the form to add the indicator to the catalog
-
-### Contributing via GitHub
-1. Fork the repository
-2. Add new indicators to `data.js`
-3. Submit a pull request for review
-
-## Technical Details
+## 🛠️ Technical Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Data Storage**: JSON format in `data.js`
-- **Hosting**: Compatible with GitHub Pages
-- **Dependencies**: Font Awesome for icons
+- **Data Storage**: JSON format (`data.js`, `reports-data.js`)
+- **Hosting**: GitHub Pages
+- **Icons**: Font Awesome
+- **Architecture**: Multi-page with shared components
 
-## Data Sources
+## 📋 Data Structure
 
-The catalog includes indicators from reputable international organizations:
+Each indicator includes:
+- **Name & Description**: Clear indicator identification
+- **Cluster & Theme**: Thematic classification
+- **Source & Metadata**: Original data source and methodology
+- **Usage Context**: How it's used in specific reports
+- **Direct Links**: Access to original datasets
 
-- United Nations agencies (UNDP, UNCTAD, UNHCR, UNICEF, etc.)
-- World Bank
-- International Monetary Fund (IMF)
-- International Labour Organization (ILO)
-- World Intellectual Property Organization (WIPO)
-- International Energy Agency (IEA)
-- International Renewable Energy Agency (IRENA)
-- And many more
+## 🚀 Quick Start
 
-## Maintenance
+1. **View Live Site**: [https://mafiatun.github.io/osaa-data-catalog/](https://mafiatun.github.io/osaa-data-catalog/)
+2. **Browse Indicators**: Use search and filters to find specific data
+3. **Explore Reports**: View comprehensive report data and sources
+4. **Access Sources**: Click through to original datasets
 
-The catalog is designed to be easily maintainable:
+## 🔧 Local Development
 
-- All data is stored in `data.js` for easy editing
-- The interface automatically updates when new indicators are added
-- Version control through GitHub enables tracking of changes
-- Regular updates ensure data remains current and relevant
+```bash
+# Clone repository
+git clone https://github.com/MafiAtUN/osaa-data-catalog.git
 
-## Contributing
+# Serve locally
+python3 -m http.server 8000
 
-We welcome contributions from the development community:
+# Open browser
+open http://localhost:8000
+```
 
-1. **Adding New Indicators**: Use the web interface or edit `data.js` directly
-2. **Improving Documentation**: Update this README or add new documentation
-3. **Enhancing Features**: Suggest or implement new functionality
-4. **Data Quality**: Help ensure data accuracy and completeness
+## 📝 Adding New Data
 
-## License
+### For Reports:
+1. Add report data to `reports-data.js`
+2. Include all indicators and sources used
+3. Update filter options in `reports.html`
 
-This project is maintained by the UN OSAA team and the global development community. All data sources maintain their original licensing terms.
+### For Indicators:
+1. Add indicator data to `data.js`
+2. Ensure proper cluster classification
+3. Include complete metadata and source links
 
-## Contact
+## 🌐 Data Sources
 
-For questions or suggestions about this data catalog, please contact the UN OSAA team or open an issue in this repository.
+Comprehensive coverage from:
+- **UN Agencies**: UNDP, UNCTAD, UNHCR, UNICEF, WHO, UNESCO, etc.
+- **Financial Institutions**: World Bank, IMF, AfDB
+- **Research Organizations**: Mo Ibrahim Foundation, ACLED, SDSN, Afrobarometer
+- **Regional Organizations**: African Union, UN ECA
+- **Specialized Agencies**: ILO, WIPO, IEA, IRENA, UNODC
+
+## 📞 Contact
+
+**Developed by**: Mafizul Islam, SMU Data Team  
+**Maintained by**: UN OSAA team and global development community
+
+For questions or contributions, please open an issue in this repository.
 
 ---
 
-*Last updated: December 2024*
+*© 2025 United Nations Office of the Special Adviser on Africa. All rights reserved.*

@@ -19,25 +19,34 @@ document.addEventListener('DOMContentLoaded', async function() {
         filteredIndicators = [...indicators];
         filteredReports = [...reports];
         
-        // Check for URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const clusterParam = urlParams.get('cluster');
+        // Setup event listeners first
+        setupEventListeners();
         
-        if (clusterParam) {
-            // Wait for elements to be available
-            setTimeout(() => {
-                const clusterFilter = document.getElementById('clusterFilter');
-                if (clusterFilter) {
-                    clusterFilter.value = clusterParam;
-                    handleFilter();
-                }
-            }, 200);
-        } else {
+        // Check what page we're on and render accordingly
+        const path = window.location.pathname;
+        if (path.includes('reports.html')) {
+            // On reports page - render reports immediately
+            renderReports();
+        } else if (path.includes('indicators.html')) {
+            // On indicators page - render indicators
             renderClusters();
+        } else {
+            // Check for URL parameters on index page
+            const urlParams = new URLSearchParams(window.location.search);
+            const clusterParam = urlParams.get('cluster');
+            
+            if (clusterParam) {
+                setTimeout(() => {
+                    const clusterFilter = document.getElementById('clusterFilter');
+                    if (clusterFilter) {
+                        clusterFilter.value = clusterParam;
+                        handleFilter();
+                    }
+                }, 200);
+            }
         }
         
         updateStats();
-        setupEventListeners();
     } catch (error) {
         console.error('Error initializing application:', error);
         showError('Failed to load data. Please refresh the page.');
@@ -599,16 +608,16 @@ function filterReports() {
 
 // Handle report dropdown search
 function handleReportDropdownSearch(event) {
-    const searchTerm = event.target.value.toLowerCase();
-    const dropdownMenu = document.getElementById('reportDropdownMenu');
+    const searchTerm = event.target.value;
     const container = document.querySelector('.dropdown-container');
     
-    if (searchTerm.length > 0) {
+    // Always show dropdown when typing
+    if (!container.classList.contains('active')) {
         container.classList.add('active');
-        populateReportDropdown(searchTerm);
-    } else {
-        container.classList.remove('active');
     }
+    
+    // Populate dropdown with filtered results
+    populateReportDropdown(searchTerm);
 }
 
 // Show report dropdown
@@ -616,10 +625,9 @@ function showReportDropdown() {
     const container = document.querySelector('.dropdown-container');
     const dropdown = document.getElementById('reportDropdown');
     
-    if (dropdown.value.length > 0) {
-        container.classList.add('active');
-        populateReportDropdown(dropdown.value);
-    }
+    container.classList.add('active');
+    const searchTerm = dropdown.value || '';
+    populateReportDropdown(searchTerm);
 }
 
 // Hide report dropdown
@@ -636,24 +644,25 @@ function populateReportDropdown(searchTerm = '') {
     const dropdownMenu = document.getElementById('reportDropdownMenu');
     if (!dropdownMenu) return;
     
-    const filteredReports = reports.filter(report => 
+    const lowerSearch = searchTerm.toLowerCase();
+    const filtered = reports.filter(report => 
         !searchTerm || 
-        report.title.toLowerCase().includes(searchTerm) ||
-        report.summary.toLowerCase().includes(searchTerm) ||
-        report.year.includes(searchTerm)
+        report.title.toLowerCase().includes(lowerSearch) ||
+        report.summary.toLowerCase().includes(lowerSearch) ||
+        report.year.toLowerCase().includes(lowerSearch)
     );
     
-    if (filteredReports.length === 0) {
+    if (filtered.length === 0) {
         dropdownMenu.innerHTML = '<div class="dropdown-item">No reports found</div>';
         return;
     }
     
-    dropdownMenu.innerHTML = filteredReports.map(report => `
+    dropdownMenu.innerHTML = filtered.map(report => `
         <div class="dropdown-item" onclick="selectReport('${report.id}')">
             <div class="dropdown-item-title">${report.title}</div>
             <div class="dropdown-item-year">${report.year}</div>
-            <div class="dropdown-item-summary">${report.summary.substring(0, 100)}...</div>
-            <div class="dropdown-item-indicators">${report.indicators.length} indicators</div>
+            ${report.summary ? `<div class="dropdown-item-summary">${report.summary.substring(0, 100)}...</div>` : ''}
+            <div class="dropdown-item-indicators">${report.indicators ? report.indicators.length : 0} indicators</div>
         </div>
     `).join('');
 }
@@ -670,9 +679,20 @@ function selectReport(reportId) {
     filteredReports = [report];
     renderReports();
     
-    // Hide dropdown
+    // Hide dropdown and clear other filters
     const container = document.querySelector('.dropdown-container');
     container.classList.remove('active');
+    
+    // Clear other filters to show only the selected report
+    const reportSearch = document.getElementById('reportSearch');
+    const reportClusterFilter = document.getElementById('reportClusterFilter');
+    const sourceFilter = document.getElementById('sourceFilter');
+    const tagFilter = document.getElementById('tagFilter');
+    
+    if (reportSearch) reportSearch.value = '';
+    if (reportClusterFilter) reportClusterFilter.value = '';
+    if (sourceFilter) sourceFilter.value = '';
+    if (tagFilter) tagFilter.value = '';
 }
 
 // Render reports

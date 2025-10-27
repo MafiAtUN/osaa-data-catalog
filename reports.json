@@ -1,0 +1,2060 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-10-27",
+    "description": "UN OSAA Data Catalog - Reports Data",
+    "totalReports": 8,
+    "years": [
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ]
+  },
+  "reports": [
+    {
+      "id": "nepad_2025",
+      "title": "NEPAD 2025 - UN SG Report on Financing for Development in Africa, 2025",
+      "year": "2025",
+      "link": "https://docs.un.org/en/A/80/185",
+      "summary": "Comprehensive analysis of financing for development in Africa, examining the $1.6 trillion financing gap for SDG implementation and exploring innovative financing mechanisms, domestic resource mobilization, and regional integration through AfCFTA.",
+      "cluster": "financing",
+      "tags": [
+        "SDG",
+        "Financing",
+        "Development",
+        "Africa",
+        "NEPAD"
+      ],
+      "indicators": [
+        {
+          "name": "Financing gap for SDG implementation",
+          "value": "$1.6 trillion",
+          "source": "African Union (AU) / UN OSAA",
+          "link": "https://au.int/sites/default/files/documents/42988-doc-ADD2023-1.pdf",
+          "notes": "From the AU's 'Addis Ababa Declaration 2023'; used in Figure I.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Official Development Assistance (ODA), Foreign Direct Investment (FDI), Remittances",
+          "value": "Flows to Africa 2010–2023",
+          "source": "OECD, UNCTAD, World Bank (KNOMAD)",
+          "link": "https://data.oecd.org/oda/net-oda-received.htm, https://unctadstat.unctad.org/, https://www.knomad.org/",
+          "notes": "Used in Figure II (flows to Africa 2010–2023).",
+          "cluster": "financing"
+        },
+        {
+          "name": "Remittance cost",
+          "value": "8.6% average",
+          "source": "World Bank – Remittance Prices Worldwide",
+          "link": "https://remittanceprices.worldbank.org/en",
+          "notes": "SDG 10.c.1 indicator. Africa highest global remittance cost.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Tax-to-GDP ratio / Domestic tax revenue share",
+          "value": "Various by country",
+          "source": "IMF, OECD, ATAF, WDI",
+          "link": "https://data.imf.org/, https://databank.worldbank.org/source/world-development-indicators, https://www.oecd.org/en/publications/revenue-statistics-in-africa-2024_78e9af3a-en.html",
+          "notes": "Used in Figures IV & V.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Public sector efficiency (CPIA index)",
+          "value": "Country Policy and Institutional Assessment scores",
+          "source": "World Bank – Country Policy and Institutional Assessment",
+          "link": "https://openknowledge.worldbank.org/bitstreams/31808ab0-b779-4bed-ad4a-23c692b12456/download",
+          "notes": "Used in Figure IV to measure African public sector performance.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Tax collection cost",
+          "value": "1.4% of revenue",
+          "source": "IMF – International Survey on Revenue Administration (ISORA 2023)",
+          "link": "https://data.imf.org/en/Data-Explorer?datasetUrn=ISORA:ISORA_LATEST_DATA_PUB(4.0.0)",
+          "notes": "Used to show decline in tax collection costs.",
+          "cluster": "financing"
+        },
+        {
+          "name": "ICT expenditure in tax administrations",
+          "value": "Digitalization investment data",
+          "source": "IMF (ISORA Data)",
+          "link": "https://data.imf.org/en/Data-Explorer?datasetUrn=ISORA:ISORA_LATEST_DATA_PUB(4.0.0)",
+          "notes": "Used in Figure VI (digitalization investment).",
+          "cluster": "financing"
+        },
+        {
+          "name": "Tax effort index",
+          "value": "0.55 vs 0.67–0.98 global average",
+          "source": "IMF Working Paper SDN/2023/006",
+          "link": "https://www.imf.org/-/media/Files/Publications/SDN/2023/English/SDNEA2023006.ashx",
+          "notes": "Used in Figure VII; Africa's tax effort = 0.55 vs 0.67–0.98 global average.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Tax expenditures",
+          "value": "1.8% GDP forgone",
+          "source": "Global Tax Expenditures Database / IMF / World Bank",
+          "link": "https://doi.org/10.5281/zenodo.12585656",
+          "notes": "Shows forgone revenues from tax incentives.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Illicit Financial Flows",
+          "value": "$88.6B annual",
+          "source": "UNCTAD / UNECA / UNODC / PERI (UMass Amherst)",
+          "link": "https://unctad.org/publication/economic-development-africa-report-2020, https://peri.umass.edu/publication/new-estimates-of-capital-flight-from-african-countries-1970-2022",
+          "notes": "Used in Figure VIII to compare IFFs vs ODA.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Governance indicators (Rule of Law, Transparency, etc.)",
+          "value": "Ibrahim Index scores",
+          "source": "Mo Ibrahim Foundation – Ibrahim Index of African Governance",
+          "link": "https://mo.ibrahim.foundation/sites/default/files/2024-10/2024-index-report.pdf",
+          "notes": "Used in Figure IX for governance trends.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Integrated National Financing Frameworks (INFFs)",
+          "value": "36 African countries implementing",
+          "source": "UNDP / INFF Platform",
+          "link": "https://inff.org/dashboard",
+          "notes": "Cited for the 36 African countries implementing INFFs.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Social Protection and Labour Data",
+          "value": "Resilience and inclusion analysis",
+          "source": "ILO / ILOSTAT",
+          "link": "https://ilostat.ilo.org/data/",
+          "notes": "Used for resilience and inclusion analysis.",
+          "cluster": "financing"
+        },
+        {
+          "name": "African Continental Free Trade Area trade share",
+          "value": "16%",
+          "source": "UNCTAD",
+          "link": "https://unctad.org/publication/economic-development-africa-report-2024",
+          "notes": "Used in para. 29 for intra-African trade analysis.",
+          "cluster": "industrialization"
+        },
+        {
+          "name": "Industrialization and value chains",
+          "value": "Regional integration data",
+          "source": "AU Summit on Industrialization and Economic Diversification",
+          "link": "https://au.int/en/summit-africa-industrialization-economic",
+          "notes": "Contextual reference for regional integration.",
+          "cluster": "industrialization"
+        },
+        {
+          "name": "Capital Adequacy Framework (CAF) reforms",
+          "value": "MDB lending capacity data",
+          "source": "G20 / GI Hub",
+          "link": "https://cdn.gihub.org/umbraco/media/5355/g20_roadmap_for_mdbcaf.pdf",
+          "notes": "Used in para. 31–32 for MDB lending capacity.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Gross Fixed Capital Formation (% GDP)",
+          "value": "Investment data by country",
+          "source": "World Bank (WDI)",
+          "link": "https://databank.worldbank.org/source/world-development-indicators",
+          "notes": "Used in Figure X.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Domestic Credit to Private Sector (% GDP)",
+          "value": "Credit data by country",
+          "source": "World Bank (WDI)",
+          "link": "https://databank.worldbank.org/source/world-development-indicators",
+          "notes": "Used in Figure XI.",
+          "cluster": "financing"
+        },
+        {
+          "name": "FDI inflows",
+          "value": "2013–2024 data",
+          "source": "UNCTAD",
+          "link": "https://unctad.org/fdistatistics",
+          "notes": "Used in Figure XII.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Energy Access",
+          "value": "600M without access",
+          "source": "UN SDG / IEA",
+          "link": "https://www.iea.org/reports/sdg7-data-and-projections/access-to-electricity",
+          "notes": "Used in para. 39–40.",
+          "cluster": "energy"
+        },
+        {
+          "name": "Food insecurity / agricultural share",
+          "value": "17.5% GDP",
+          "source": "FAO / World Bank",
+          "link": "https://www.fao.org/statistics/en",
+          "notes": "Used in Figure XIII.",
+          "cluster": "energy"
+        },
+        {
+          "name": "CAADP Agriculture Strategy",
+          "value": "2026–2035 projections",
+          "source": "African Union",
+          "link": "https://au.int/sites/default/files/newsevents/workingdocuments/44323-wd-3.EN_CAADP_Strategy_and_Action_Plan-_2026-2035_September_15_2024_Final.pdf",
+          "notes": "Used for agricultural investment projections.",
+          "cluster": "energy"
+        },
+        {
+          "name": "Private Sector Development Strategy",
+          "value": "2021–2025 data",
+          "source": "African Development Bank",
+          "link": "https://www.afdb.org/en/documents/private-sector-development-strategy-psds-2021-2025",
+          "notes": "Used for private sector financing discussion.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Capital Markets Progress Report",
+          "value": "2024 data",
+          "source": "FSD Africa",
+          "link": "https://fsdafrica.org/publication/capital-markets-progress-report-2024/",
+          "notes": "Used for domestic bond market example (Tanzania water bond).",
+          "cluster": "financing"
+        },
+        {
+          "name": "AFAWA Women Entrepreneurship Gap",
+          "value": "$42B",
+          "source": "AfDB",
+          "link": "https://www.afdb.org/fileadmin/uploads/afdb/Documents/Generic-Documents/AFAWA_-Unleashing_women%E2%80%99s_entrepreneurship__en.pdf",
+          "notes": "Used in para. 44 on SME financing.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Interest Rates / Cost of Debt",
+          "value": "Various rates by region",
+          "source": "Afreximbank, U.S. Treasury, ECB",
+          "link": "https://media.afreximbank.com/afrexim/African-Debt-Outlook-A-Ray-of-Optimism.pdf, https://fiscaldata.treasury.gov/, https://www.ecb.europa.eu/",
+          "notes": "Used in Figure XV for cost of capital analysis.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Debt Sustainability / Export Ratios",
+          "value": "Various ratios by country",
+          "source": "World Bank (WDI)",
+          "link": "https://databank.worldbank.org/source/world-development-indicators",
+          "notes": "Used in Figure XVI.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Common Framework for Debt Treatments",
+          "value": "Debt restructuring data",
+          "source": "ODI",
+          "link": "https://odi.org/en/insights/common-framework-uncommon-challenges-lessons-from-the-post-covid-debt-restructuring-architecture/",
+          "notes": "Used for debt restructuring analysis.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Global Sovereign Debt Roundtable Playbook",
+          "value": "2025 recommendations",
+          "source": "IMF",
+          "link": "https://www.imf.org/-/media/Files/About/FAQ/gsdr/042325-gsdr-restructuring-playbook.ashx",
+          "notes": "Used in para. 66 for debt reform recommendations.",
+          "cluster": "financing"
+        },
+        {
+          "name": "School Meals Coalition – Debt Swap Study",
+          "value": "Debt-for-development swaps data",
+          "source": "WFP / School Meals Coalition",
+          "link": "https://schoolmealscoalition.org/debt-swap-school-meals-opportunities-and-constraints",
+          "notes": "Example of debt-for-development swaps.",
+          "cluster": "financing"
+        },
+        {
+          "name": "World Bank Project – Rwanda SDG-linked Bond",
+          "value": "Innovative financing example",
+          "source": "World Bank",
+          "link": "https://projects.worldbank.org/en/projects-operations/project-detail/P175273",
+          "notes": "Example of innovative SDG-linked bond.",
+          "cluster": "financing"
+        }
+      ],
+      "sources": [
+        {
+          "name": "African Union",
+          "link": "https://au.int/",
+          "type": "Regional Organization"
+        },
+        {
+          "name": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "UNCTAD",
+          "link": "https://unctad.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "IMF",
+          "link": "https://www.imf.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "OECD",
+          "link": "https://www.oecd.org/",
+          "type": "International Organization"
+        },
+        {
+          "name": "UN",
+          "link": "https://www.un.org/",
+          "type": "International Organization"
+        },
+        {
+          "name": "FAO",
+          "link": "https://www.fao.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "ILO",
+          "link": "https://www.ilo.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "African Development Bank",
+          "link": "https://www.afdb.org/",
+          "type": "Regional Development Bank"
+        }
+      ]
+    },
+    {
+      "id": "nepad_2022",
+      "title": "NEPAD 2022 - Financing for development in the era of the COVID-19 pandemic: primacy of domestic resource mobilization",
+      "year": "2022",
+      "link": "https://docs.un.org/en/A/76/888",
+      "summary": "Comprehensive analysis of financing for development in Africa during the COVID-19 pandemic, focusing on the primacy of domestic resource mobilization. The report examines Africa's economic recovery, financing sources, tax mobilization efforts, and the role of digital economy and infrastructure governance in post-pandemic development.",
+      "cluster": "financing",
+      "tags": [
+        "SDG",
+        "Financing",
+        "Development",
+        "Africa",
+        "NEPAD",
+        "COVID-19",
+        "Domestic Resources"
+      ],
+      "indicators": [
+        {
+          "name": "GDP growth (real, regional, per capita)",
+          "value": "3.8% in 2021, 4.0% in 2022",
+          "source": "United Nations DESA",
+          "link": "https://www.un.org/development/desa/dpad/publication/world-economic-situation-and-prospects-2022/",
+          "notes": "Used to show Africa's recovery post-COVID (3.8% in 2021, 4.0% in 2022).",
+          "cluster": "financing"
+        },
+        {
+          "name": "Sources of financing (public revenues, FDI, ODA, remittances, savings)",
+          "value": "Structure of Africa's development finance",
+          "source": "African Union, OECD",
+          "link": "https://www.oecd.org/",
+          "notes": "Table 1 showing structure of Africa's development finance.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Remittances to Africa",
+          "value": "Resilience during COVID-19",
+          "source": "World Bank / KNOMAD",
+          "link": "https://www.knomad.org/",
+          "notes": "Used to show resilience of remittance inflows during COVID-19.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Tax-to-GDP ratio",
+          "value": "Regional tax mobilization efforts",
+          "source": "OECD / AU / ATAF",
+          "link": "https://www.oecd.org/tax/tax-policy/revenue-statistics-in-africa.htm",
+          "notes": "Used to compare regional tax mobilization efforts.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Gross domestic savings",
+          "value": "Savings rates comparison",
+          "source": "World Bank",
+          "link": "https://databank.worldbank.org/source/world-development-indicators",
+          "notes": "Used to compare savings rates with Latin America and Asia.",
+          "cluster": "financing"
+        },
+        {
+          "name": "FDI inflows and stocks",
+          "value": "Africa's declining FDI trend",
+          "source": "UNCTAD",
+          "link": "https://unctad.org/topic/investment/investment-statistics-and-trends",
+          "notes": "Data for figure on Africa's declining FDI trend.",
+          "cluster": "financing"
+        },
+        {
+          "name": "External debt and fiscal space",
+          "value": "Debt ratios and fiscal constraints",
+          "source": "IMF",
+          "link": "https://www.imf.org/en/Publications/WEO",
+          "notes": "Used for debt ratios and fiscal constraint visuals.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Spending efficiency in health, education, infrastructure",
+          "value": "~2.87% of Africa's GDP inefficiency cost",
+          "source": "IMF",
+          "link": "https://www.imf.org/en/Publications/FM",
+          "notes": "Used for figure on inefficiency cost (~2.87% of Africa's GDP).",
+          "cluster": "financing"
+        },
+        {
+          "name": "Public wage bill as % of expenditure",
+          "value": "One-third of expenditure consumed by wages",
+          "source": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "notes": "Used to show one-third of expenditure consumed by wages.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Health spending efficiency",
+          "value": "Life-expectancy losses from inefficiency",
+          "source": "IMF",
+          "link": "https://www.imf.org/en/Publications/WP/Issues/2022/03/04/Patterns-and-Drivers-of-Health-Spending-Efficiency-513694",
+          "notes": "Used to estimate life-expectancy losses from inefficiency.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Infrastructure governance / PIMA",
+          "value": "Infrastructure efficiency data",
+          "source": "IMF",
+          "link": "https://infrastructuregovern.imf.org/",
+          "notes": "Used for figure on infrastructure efficiency.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Tax administration and e-tax performance",
+          "value": "Tax administration performance index",
+          "source": "IMF / RA-FIT",
+          "link": "https://data.rafit.org",
+          "notes": "Data for tax administration performance index.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Tax expenditure / foregone revenue",
+          "value": "$46 billion (2.5% GDP) forgone revenue",
+          "source": "IMF / ICTD",
+          "link": "https://doi.org/10.5281/zenodo.12585656",
+          "notes": "Used to show $46 billion (2.5% GDP) forgone revenue.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Digital economy contribution",
+          "value": "$180 billion contribution by 2025",
+          "source": "Google / IFC",
+          "link": "https://www.ifc.org/",
+          "notes": "Used to project $180 billion contribution by 2025.",
+          "cluster": "sti"
+        },
+        {
+          "name": "Sovereign wealth funds data",
+          "value": "Sovereign wealth fund growth",
+          "source": "SWFI / AfDB / Franklin Templeton",
+          "link": "https://www.swfinstitute.org/fund-rankings/sovereign-wealth-fund",
+          "notes": "Used for section on sovereign wealth fund growth.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Financial depth / development index",
+          "value": "Financial sector depth comparison",
+          "source": "IMF",
+          "link": "https://data.imf.org/?sk=F8032E80-B36C-43B1-AC26-493C5B1CD33B",
+          "notes": "Used for comparing financial sector depth.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Pension fund assets",
+          "value": "Allocation and foreign investment data",
+          "source": "OECD",
+          "link": "https://www.oecd.org/finance/pensionmarketsinfocus.htm",
+          "notes": "Used for figures on allocation and foreign investment.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Infrastructure PPP database",
+          "value": "PPP trends and sectoral share",
+          "source": "World Bank",
+          "link": "https://ppi.worldbank.org/",
+          "notes": "Used for PPP trends and sectoral share (energy, transport, ICT).",
+          "cluster": "financing"
+        },
+        {
+          "name": "Capital flight / IFFs",
+          "value": "IFF trend analysis 1970–2018",
+          "source": "PERI (UMass Amherst)",
+          "link": "https://peri.umass.edu/",
+          "notes": "Used for IFF trend analysis (figure XVI, XVII).",
+          "cluster": "financing"
+        },
+        {
+          "name": "Illicit financial flows (regional estimates)",
+          "value": "Regional breakdown and SDG gap impact",
+          "source": "UNCTAD",
+          "link": "https://unctad.org/webflyer/economic-development-africa-report-2020",
+          "notes": "Data for regional breakdown and SDG gap impact.",
+          "cluster": "financing"
+        },
+        {
+          "name": "BEPS membership / tax transparency",
+          "value": "15% global minimum tax participation",
+          "source": "OECD",
+          "link": "https://www.oecd.org/tax/beps/",
+          "notes": "Used for discussion on Africa's participation and 15% global minimum tax.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Global tax transparency participation",
+          "value": "29 African member countries",
+          "source": "OECD Global Forum",
+          "link": "https://www.oecd.org/tax/transparency/",
+          "notes": "For list of 29 African member countries.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Development finance / ODA",
+          "value": "Net ODA disbursement trends",
+          "source": "OECD-DAC",
+          "link": "https://stats.oecd.org/",
+          "notes": "Used for figure on net ODA disbursement trends.",
+          "cluster": "financing"
+        },
+        {
+          "name": "Capital markets / stock exchanges",
+          "value": "Stock exchange statistics",
+          "source": "World Federation of Exchanges",
+          "link": "https://www.world-exchanges.org/our-work/statistics",
+          "notes": "Used for capital markets analysis and stock exchange data.",
+          "cluster": "financing"
+        }
+      ],
+      "sources": [
+        {
+          "name": "United Nations DESA",
+          "link": "https://www.un.org/development/desa/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "OECD",
+          "link": "https://www.oecd.org/",
+          "type": "International Organization"
+        },
+        {
+          "name": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "UNCTAD",
+          "link": "https://unctad.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "IMF",
+          "link": "https://www.imf.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "African Union",
+          "link": "https://au.int/",
+          "type": "Regional Organization"
+        },
+        {
+          "name": "ATAF",
+          "link": "https://www.ataftax.org/",
+          "type": "Regional Organization"
+        },
+        {
+          "name": "Google / IFC",
+          "link": "https://www.ifc.org/",
+          "type": "Private Sector"
+        },
+        {
+          "name": "SWFI",
+          "link": "https://www.swfinstitute.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "World Federation of Exchanges",
+          "link": "https://www.world-exchanges.org/",
+          "type": "Industry Association"
+        }
+      ]
+    },
+    {
+      "id": "nepad_2024",
+      "title": "NEPAD - 2024: Unpacking the Debt of Africa: Towards a Lasting and Durable Solution",
+      "year": "2024",
+      "link": "https://undocs.org/en/A/79/295",
+      "summary": "Comprehensive analysis of Africa's debt challenges and pathways to sustainable solutions. The report examines debt trends from 1970-2022, analyzes the impact of debt servicing on development spending, explores resource-backed loans and transparency issues, and provides recommendations for lasting debt solutions including MDB recapitalization and SDR allocation.",
+      "cluster": "financing",
+      "tags": [
+        "SDG",
+        "Financing",
+        "Development",
+        "Africa",
+        "NEPAD",
+        "Debt",
+        "Sustainability"
+      ],
+      "indicators": [
+        {
+          "name": "Total external debt (public + private)",
+          "value": "Debt stock trend 1970–2022",
+          "source": "World Bank",
+          "link": "https://databank.worldbank.org/source/international-debt-statistics",
+          "notes": "Used for debt stock trend (1970–2022) and growth figures",
+          "cluster": "financing"
+        },
+        {
+          "name": "External debt (% of GDP)",
+          "value": "Debt-to-GDP ratios and fiscal space analysis",
+          "source": "World Bank / OSAA staff calculations",
+          "link": "https://data.worldbank.org/indicator",
+          "notes": "Used for debt-to-GDP ratios and fiscal space analysis",
+          "cluster": "financing"
+        },
+        {
+          "name": "IMF credit and loan exposure to Africa",
+          "value": "Historical credit distribution and borrowing patterns",
+          "source": "IMF",
+          "link": "https://data.imf.org/",
+          "notes": "Cited for historical credit distribution and borrowing patterns",
+          "cluster": "financing"
+        },
+        {
+          "name": "Debt relief initiatives (Heavily Indebted Poor Countries / Multilateral Debt Relief Initiative)",
+          "value": "Historical debt relief programmes",
+          "source": "IMF and World Bank",
+          "link": "https://www.imf.org/en/About/Factsheets/Sheets/2023/Debt-relief-under-the-heavily-indebted-poor-countries",
+          "notes": "Referenced in historical analysis of Africa's debt relief programmes",
+          "cluster": "financing"
+        },
+        {
+          "name": "Debt service as % of government revenue (2010–2022)",
+          "value": "Impact on education spending",
+          "source": "World Bank / UNESCO / OSAA",
+          "link": "https://uis.unesco.org/",
+          "notes": "Used to show impact of debt servicing on education spending",
+          "cluster": "financing"
+        },
+        {
+          "name": "Domestic debt issuance (% of GDP)",
+          "value": "Growth of local currency bonds and domestic markets",
+          "source": "World Bank",
+          "link": "https://datatopics.worldbank.org/financialinclusion/",
+          "notes": "Tracks growth of local currency bonds and domestic markets",
+          "cluster": "financing"
+        },
+        {
+          "name": "Resource-backed loans (2004–2018)",
+          "value": "Non-transparent collateralized borrowing assessment",
+          "source": "World Bank",
+          "link": "https://www.worldbank.org/en/topic/debt",
+          "notes": "Used to assess non-transparent collateralized borrowing",
+          "cluster": "financing"
+        },
+        {
+          "name": "Interest payments as % of revenue (Egypt, Ghana)",
+          "value": "Debt burden on fiscal space indicator",
+          "source": "World Bank / OSAA",
+          "link": "https://data.worldbank.org/",
+          "notes": "Indicator of debt burden on fiscal space",
+          "cluster": "financing"
+        },
+        {
+          "name": "Public debt and economic growth relationship (academic meta analysis)",
+          "value": "Empirical threshold effects of debt on growth",
+          "source": "Academic research sources",
+          "link": "https://www.researchgate.net/",
+          "notes": "Referenced to show empirical threshold effects of debt on growth",
+          "cluster": "financing"
+        },
+        {
+          "name": "Debt transparency index / sovereign reporting",
+          "value": "40% of African countries had no debt report publicly available",
+          "source": "World Bank",
+          "link": "https://www.worldbank.org/en/topic/debt",
+          "notes": "40% of African countries had no debt report publicly available",
+          "cluster": "financing"
+        },
+        {
+          "name": "Sustainable Development Finance Assessment (SDFA)",
+          "value": "Debt sustainability incorporating SDG requirements",
+          "source": "UNCTAD",
+          "link": "https://mobilizingdevfinance.org/tool/unctad-sustainable-development-finance-assessment-sdfa",
+          "notes": "Used to assess debt sustainability incorporating SDG requirements",
+          "cluster": "financing"
+        },
+        {
+          "name": "Illicit financial flows / capital flight (1970–2022)",
+          "value": "IFF vs ODA comparison",
+          "source": "PERI / OECD / OSAA calculations",
+          "link": "https://peri.umass.edu/publication/new-estimates-of-capital-flight-from-african-countries-1970-2022/",
+          "notes": "Used for IFF vs ODA comparison",
+          "cluster": "financing"
+        },
+        {
+          "name": "Credit ratings and risk premiums (Africa vs global)",
+          "value": "Africa's cost of capital (8.2%) vs Europe/US",
+          "source": "Afreximbank / U.S. Treasury / ECB / IPFA",
+          "link": "https://media.afreximbank.com/afrexim/African-Debt-Outlook-A-Ray-of-Optimism.pdf",
+          "notes": "Used for comparative analysis of Africa's cost of capital (8.2%) vs Europe/US",
+          "cluster": "financing"
+        },
+        {
+          "name": "Concessional and multilateral financing availability",
+          "value": "MDB recapitalization and SDR allocation recommendations",
+          "source": "AfDB / ADB / IMF",
+          "link": "https://www.adb.org/news/viewpoint-note-mdbs-working-system-impact-and-scale",
+          "notes": "Used for recommendations on MDB recapitalization and SDR allocation",
+          "cluster": "financing"
+        }
+      ],
+      "sources": [
+        {
+          "name": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "IMF",
+          "link": "https://www.imf.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "UNESCO",
+          "link": "https://www.unesco.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UNCTAD",
+          "link": "https://unctad.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "PERI (UMass Amherst)",
+          "link": "https://peri.umass.edu/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "OECD",
+          "link": "https://www.oecd.org/",
+          "type": "International Organization"
+        },
+        {
+          "name": "Afreximbank",
+          "link": "https://www.afreximbank.com/",
+          "type": "Regional Development Bank"
+        },
+        {
+          "name": "African Development Bank",
+          "link": "https://www.afdb.org/",
+          "type": "Regional Development Bank"
+        },
+        {
+          "name": "Asian Development Bank",
+          "link": "https://www.adb.org/",
+          "type": "Regional Development Bank"
+        },
+        {
+          "name": "U.S. Treasury",
+          "link": "https://fiscaldata.treasury.gov/",
+          "type": "Government Agency"
+        },
+        {
+          "name": "European Central Bank",
+          "link": "https://www.ecb.europa.eu/",
+          "type": "Central Bank"
+        }
+      ]
+    },
+    {
+      "id": "nepad_2023",
+      "title": "NEPAD - 2023: Solving the Paradoxes of Development in Africa: Financing, Energy and Food Systems",
+      "year": "2023",
+      "link": "https://undocs.org/en/A/78/309",
+      "summary": "Comprehensive analysis of Africa's interconnected development paradoxes in financing, energy, and food systems. The report examines the continent's vast potential in renewable energy and agricultural resources against persistent challenges in access, efficiency, and investment. It provides data-driven insights on illicit financial flows, energy access gaps, food insecurity, and governance systems while proposing integrated solutions for sustainable development.",
+      "cluster": "financing",
+      "tags": [
+        "SDG",
+        "Financing",
+        "Development",
+        "Africa",
+        "NEPAD",
+        "Energy",
+        "Food Systems",
+        "Paradoxes"
+      ],
+      "indicators": [
+        {
+          "name": "GDP, growth, external debt, remittances, savings, FDI",
+          "value": "Financing, energy, and food paradoxes data",
+          "source": "World Bank",
+          "link": "https://databank.worldbank.org/source/world-development-indicators",
+          "notes": "Used across figures I–V to calculate financing, energy, and food paradoxes",
+          "cluster": "financing"
+        },
+        {
+          "name": "Tax and non-tax revenue, pension funds",
+          "value": "Domestic financing, remittance, and savings data",
+          "source": "OECD",
+          "link": "https://www.oecd.org/dev/africa-development-dynamics-2023.htm",
+          "notes": "Source for domestic financing, remittance, and savings data",
+          "cluster": "financing"
+        },
+        {
+          "name": "Illicit financial flows",
+          "value": "$88.6 billion annual IFFs from Africa",
+          "source": "PERI, UMass Amherst",
+          "link": "https://peri.umass.edu/publication/item/1395-capital-flight-from-africa-1970-2018",
+          "notes": "Used for estimating $88.6 billion annual IFFs from Africa",
+          "cluster": "financing"
+        },
+        {
+          "name": "Public expenditure inefficiency, tax expenditures",
+          "value": "$116 billion annual inefficiencies in domestic resource mobilization",
+          "source": "German Development Institute (DIE) / ICTD",
+          "link": "https://www.die-gdi.de/en/studies/article/global-tax-expenditures-database-flagship-report-2021/",
+          "notes": "Used to estimate $116 billion annual inefficiencies in domestic resource mobilization",
+          "cluster": "financing"
+        },
+        {
+          "name": "Energy reserves and production (oil, gas, hydropower)",
+          "value": "Africa's energy potential and consumption shares",
+          "source": "International Energy Agency (IEA)",
+          "link": "https://www.iea.org/reports/world-energy-outlook-2021",
+          "notes": "For data on Africa's energy potential and consumption shares",
+          "cluster": "energy"
+        },
+        {
+          "name": "Renewable capacity (solar, wind, hydro, geothermal)",
+          "value": "Regional distribution of renewable capacity and energy generation mix",
+          "source": "IRENA",
+          "link": "https://www.irena.org/Data/Downloads/IRENASTAT",
+          "notes": "Used for regional distribution of renewable capacity and energy generation mix",
+          "cluster": "energy"
+        },
+        {
+          "name": "Electricity access and reliability",
+          "value": "Power outages, energy consumption, rural-urban access rates",
+          "source": "World Bank / IEA / IRENA / Statista",
+          "link": "https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS",
+          "notes": "Data on power outages, energy consumption, rural-urban access rates",
+          "cluster": "energy"
+        },
+        {
+          "name": "Food insecurity, undernourishment, arable land, irrigation",
+          "value": "Food imports/exports, undernourishment rates, energy use in agriculture",
+          "source": "FAO",
+          "link": "https://www.fao.org/faostat/en/#data",
+          "notes": "Used for figures VII–IX; food imports/exports, undernourishment rates, energy use in agriculture",
+          "cluster": "energy"
+        },
+        {
+          "name": "Employment in agriculture, poverty, labor indicators",
+          "value": "Agricultural labor force share",
+          "source": "ILO",
+          "link": "https://ilostat.ilo.org/",
+          "notes": "Used in figure VII for agricultural labor force share",
+          "cluster": "energy"
+        },
+        {
+          "name": "Carbon pricing and carbon market revenue",
+          "value": "Carbon finance potential for Africa",
+          "source": "World Bank",
+          "link": "https://openknowledge.worldbank.org/handle/10986/37455",
+          "notes": "Used in section on carbon finance potential for Africa",
+          "cluster": "energy"
+        },
+        {
+          "name": "Population projections",
+          "value": "Energy demand and food production requirements by 2050",
+          "source": "United Nations DESA / Population Division",
+          "link": "https://population.un.org/dataportal",
+          "notes": "Used to project energy demand and food production requirements by 2050",
+          "cluster": "financing"
+        },
+        {
+          "name": "Agriculture share in government expenditure",
+          "value": "Decline from 2.77% to 2.27% expenditure share",
+          "source": "FAO",
+          "link": "https://www.fao.org/faostat/en/#data/SDG",
+          "notes": "Used to show decline from 2.77% to 2.27% expenditure share",
+          "cluster": "energy"
+        },
+        {
+          "name": "Intra-African agrifood trade projections",
+          "value": "AfCFTA could increase agrifood trade by 20–35%",
+          "source": "AU Commission / OECD",
+          "link": "https://www.oecd.org/dev/africa-development-dynamics-2022.htm",
+          "notes": "Used for estimate that AfCFTA could increase agrifood trade by 20–35%",
+          "cluster": "industrialization"
+        },
+        {
+          "name": "Governance indicators",
+          "value": "Average 48.9/100 country systems strength",
+          "source": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/iiag",
+          "notes": "Used to assess strength of country systems (average 48.9/100)",
+          "cluster": "financing"
+        },
+        {
+          "name": "Debt distress ratios",
+          "value": "Debt figures and fiscal risks",
+          "source": "AfDB",
+          "link": "https://projectsportal.afdb.org/dataportal",
+          "notes": "For debt figures and fiscal risks",
+          "cluster": "financing"
+        },
+        {
+          "name": "Private investment in power and infrastructure",
+          "value": "Power and infrastructure investment data",
+          "source": "PWC / AfDB / IFC",
+          "link": "https://www.pwc.com/gx/en/industries/energy-utilities-resources/assets/pwc-africa-energy-review-2021.pdf",
+          "notes": "Used for private investment analysis in power and infrastructure",
+          "cluster": "energy"
+        }
+      ],
+      "sources": [
+        {
+          "name": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "OECD",
+          "link": "https://www.oecd.org/",
+          "type": "International Organization"
+        },
+        {
+          "name": "PERI (UMass Amherst)",
+          "link": "https://peri.umass.edu/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "German Development Institute (DIE)",
+          "link": "https://www.die-gdi.de/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "International Energy Agency (IEA)",
+          "link": "https://www.iea.org/",
+          "type": "International Organization"
+        },
+        {
+          "name": "IRENA",
+          "link": "https://www.irena.org/",
+          "type": "International Organization"
+        },
+        {
+          "name": "FAO",
+          "link": "https://www.fao.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "ILO",
+          "link": "https://www.ilo.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "United Nations DESA",
+          "link": "https://www.un.org/development/desa/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "African Development Bank",
+          "link": "https://www.afdb.org/",
+          "type": "Regional Development Bank"
+        },
+        {
+          "name": "PWC",
+          "link": "https://www.pwc.com/",
+          "type": "Private Sector"
+        }
+      ]
+    },
+    {
+      "id": "coc_2025",
+      "title": "CoC 2025: Promotion of Durable Peace through Sustainable Development in Africa",
+      "year": "2025",
+      "link": "https://undocs.org/en/A/80/179",
+      "summary": "Comprehensive analysis of the intersection between governance, conflict prevention, and sustainable development in Africa. The report examines the social contract renewal, governance backsliding, poverty-conflict linkages, and the role of institutions in promoting durable peace. It provides evidence-based insights on youth employment, extremism drivers, and the economic returns of conflict prevention.",
+      "cluster": "conflict",
+      "tags": [
+        "SDG",
+        "Development",
+        "Africa",
+        "Peace",
+        "Governance",
+        "Conflict Prevention",
+        "Social Contract"
+      ],
+      "indicators": [
+        {
+          "name": "Population in extreme poverty",
+          "value": "34%",
+          "source": "African Development Bank (AfDB)",
+          "link": "https://www.afdb.org/en/knowledge/publications/african-economic-outlook",
+          "notes": "Used to show scale of poverty and development gap across Africa",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Social contract and inequality trends",
+          "value": "Social contract analysis",
+          "source": "UN ECA",
+          "link": "https://hdl.handle.net/10855/49464",
+          "notes": "Analytical basis for social contract discussion",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Governance performance and backsliding",
+          "value": "2014–2023 trends",
+          "source": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/iiag",
+          "notes": "Source for governance decline figures (Figure I, III and V)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Worldwide Governance Indicators (Government Effectiveness, Political Stability)",
+          "value": "Governance stagnation data",
+          "source": "World Bank",
+          "link": "https://info.worldbank.org/governance/wgi/",
+          "notes": "Used to show stagnation or decline in governance",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Corruption perceptions and service-delivery bribery",
+          "value": "Bribe prevalence data",
+          "source": "Afrobarometer",
+          "link": "https://www.afrobarometer.org/publications/ad743/",
+          "notes": "Data on bribe prevalence and trust in institutions",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Anti-government protests",
+          "value": "2000–2024, +23.8% annual rise",
+          "source": "ACLED",
+          "link": "https://acleddata.com/",
+          "notes": "Used in Figure IV; annual +23.8% rise in protests",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Citizen satisfaction vs governance performance",
+          "value": "Governance perception mismatch",
+          "source": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/iiag",
+          "notes": "Data for mismatch between governance outcomes and perceptions (Figure V)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Perceived inequality under law",
+          "value": "60%",
+          "source": "Afrobarometer",
+          "link": "https://www.afrobarometer.org/publications/ad871/",
+          "notes": "Used to show inequality perceptions",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Poverty-conflict correlation study",
+          "value": "Empirical evidence",
+          "source": "World Bank / CMPS",
+          "link": "https://journals.sagepub.com/home/cmp",
+          "notes": "Empirical evidence linking poverty, weak institutions, and violence",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Extremism drivers",
+          "value": "32% grievance-based recruitment",
+          "source": "UNDP",
+          "link": "https://www.undp.org/publications/journey-extremism-africa-2023",
+          "notes": "Major source for violent-extremism analysis",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Youth employment & peacebuilding",
+          "value": "Employment-conflict linkage data",
+          "source": "ILO",
+          "link": "https://www.ilo.org/global/research/publications",
+          "notes": "Used for youth-employment–conflict linkage",
+          "cluster": "conflict"
+        },
+        {
+          "name": "SDG achievement (Sahel vs Africa vs world)",
+          "value": "Regional SDG performance comparison",
+          "source": "SDSN / Dublin University Press",
+          "link": "https://www.sdgindex.org/reports/2024/",
+          "notes": "Figure VI comparing regional SDG performance",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Unconstitutional changes of government",
+          "value": "2020–2024 data",
+          "source": "UNDP",
+          "link": "https://www.undp.org/publications/soldiers-and-citizens",
+          "notes": "Cited for governance backsliding and civic-trust data",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Global Terrorism Index",
+          "value": "2024 & 2025 data",
+          "source": "Institute for Economics and Peace (IEP)",
+          "link": "https://www.visionofhumanity.org/maps/global-terrorism-index/",
+          "notes": "Used for terrorism trends and fatality figures",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Security–development trade-off",
+          "value": "Military vs social spending data",
+          "source": "World Bank",
+          "link": "https://databank.worldbank.org/source/world-development-indicators",
+          "notes": "Data used in Figure VII on military vs social spending",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Macroeconomic returns to prevention",
+          "value": "$1 = $26–$103 returns on prevention",
+          "source": "IMF",
+          "link": "https://www.imf.org/en/Publications/WP",
+          "notes": "Quantifies $1 = $26–$103 returns on prevention",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Institutional trust & leadership perception data",
+          "value": "Trust in institutions data",
+          "source": "Afrobarometer",
+          "link": "https://www.afrobarometer.org/publications/ad891/",
+          "notes": "Figures VIII–IX on trust in institutions",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Fiscal capacity & domestic revenue mobilization",
+          "value": "% of GDP data",
+          "source": "IMF / World Bank",
+          "link": "https://www.worldbank.org/en/publication/africa-s-pulse",
+          "notes": "Used to link fiscal strength and peace",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Public investment efficiency loss",
+          "value": "≈ 50%",
+          "source": "IMF",
+          "link": "https://www.imf.org/en/Publications/WP",
+          "notes": "Used for fiscal-space efficiency discussion",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Customary justice usage",
+          "value": "71% in fragile areas",
+          "source": "IDLO / World Bank",
+          "link": "https://www.idlo.int/publications",
+          "notes": "Shows importance of traditional institutions",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Digital governance and transparency benefits",
+          "value": "Transparency and trust data",
+          "source": "World Bank / UN",
+          "link": "https://openknowledge.worldbank.org/handle/10986/28337",
+          "notes": "Supports link between transparency, trust and peace",
+          "cluster": "conflict"
+        }
+      ],
+      "sources": [
+        {
+          "name": "African Development Bank",
+          "link": "https://www.afdb.org/",
+          "type": "Regional Development Bank"
+        },
+        {
+          "name": "UN ECA",
+          "link": "https://www.uneca.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "Afrobarometer",
+          "link": "https://www.afrobarometer.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "ACLED",
+          "link": "https://acleddata.com/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "UNDP",
+          "link": "https://www.undp.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "ILO",
+          "link": "https://www.ilo.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "SDSN",
+          "link": "https://www.sdgindex.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "Institute for Economics and Peace",
+          "link": "https://www.visionofhumanity.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "IMF",
+          "link": "https://www.imf.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "IDLO",
+          "link": "https://www.idlo.int/",
+          "type": "International Organization"
+        }
+      ]
+    },
+    {
+      "id": "coc_2022",
+      "title": "CoC 2022 - Governance, Conflict, and Sustainable Development in Africa",
+      "year": "2022",
+      "link": "https://undocs.org/en/A/77/644",
+      "summary": "Comprehensive analysis of the complex relationship between governance, conflict, and sustainable development in Africa. The report examines conflict patterns from 2010-2022, governance trends, SDG progress, and the role of traditional institutions. It provides evidence-based insights on governance-conflict correlations, regional variations, and the importance of inclusive governance for sustainable development.",
+      "cluster": "conflict",
+      "tags": [
+        "SDG",
+        "Development",
+        "Africa",
+        "Governance",
+        "Conflict",
+        "Sustainable Development",
+        "Traditional Institutions"
+      ],
+      "indicators": [
+        {
+          "name": "Conflict incidents, battles, protests, fatalities",
+          "value": "2010–2022 data",
+          "source": "ACLED",
+          "link": "https://acleddata.com",
+          "notes": "Used for incident statistics and fatalities, Table 1 & Figures I–II",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Coup attempts and unconstitutional changes of government",
+          "value": "1950–present data",
+          "source": "University of Kentucky (Powell & Thyne)",
+          "link": "https://www.uky.edu/~clthyn2/coup_data/home.htm",
+          "notes": "Source for tracking coup frequency and patterns",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Governance scores (overall, participation, rights, inclusion)",
+          "value": "Governance/conflict correlations",
+          "source": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/iiag",
+          "notes": "Used across Figures III–V for governance/conflict correlations",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Sustainable Development Goals progress",
+          "value": "2021 African SDG performance by Goal",
+          "source": "SDSN / Cambridge University Press",
+          "link": "https://www.sdgindex.org/reports/2021",
+          "notes": "Data source for Table 2 (African SDG performance by Goal)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Governance-conflict correlation",
+          "value": "2010–2021 inverse correlation",
+          "source": "Mo Ibrahim Foundation & ACLED",
+          "link": "https://acleddata.com",
+          "notes": "Demonstrates inverse correlation between governance quality and number of conflicts",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Governance–SDG achievement correlation",
+          "value": "2019–2021 data",
+          "source": "SDSN / IIAG combined analysis",
+          "link": "https://mo.ibrahim.foundation/iiag",
+          "notes": "Figure IV—countries with higher governance scores also perform better on SDGs",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Regional governance trends",
+          "value": "2010–2019 regional comparisons",
+          "source": "Mo Ibrahim Foundation",
+          "link": "https://iiag.online",
+          "notes": "Used for regional comparisons (North, West, East, Central, Southern Africa)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Democracy & participation trends",
+          "value": "Democratic reforms & citizen demand data",
+          "source": "Afrobarometer / IIAG / Mo Ibrahim Foundation",
+          "link": "https://www.afrobarometer.org/publications/pp54",
+          "notes": "Cited for link between democratic reforms & citizen demand for deeper participation",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Governance evolution (Burkina Faso, Guinea, Mali)",
+          "value": "2010–2019 decline analysis",
+          "source": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/news/2022-west-africa-coups",
+          "notes": "Used to assess decline in political governance preceding coups",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Colonial border analysis",
+          "value": "Historical border impact data",
+          "source": "Historical & Legal Sources",
+          "link": "https://legal.un.org/",
+          "notes": "Context for colonial legacies and State formation",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Transnational conflict studies",
+          "value": "Cross-border conflict patterns",
+          "source": "OECD / SWAC",
+          "link": "https://www.oecd.org/swac",
+          "notes": "Source for cross-border conflict patterns and external influences",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Rail infrastructure policy data",
+          "value": "Post-colonial infrastructure gaps",
+          "source": "AfDB",
+          "link": "https://www.afdb.org/en/documents",
+          "notes": "Used as example of post-colonial infrastructure gaps",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Traditional leadership governance roles",
+          "value": "Traditional institutions analysis",
+          "source": "UN ECA / Afrobarometer / Scholarly Studies",
+          "link": "https://hdl.handle.net/10855/3201",
+          "notes": "Sources cited for sections IV and V on traditional leadership",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Public trust in traditional leaders",
+          "value": "71%",
+          "source": "Afrobarometer",
+          "link": "https://www.afrobarometer.org/publications/ad437/",
+          "notes": "Data supporting local governance legitimacy",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Gender and traditional authority roles",
+          "value": "Asante, Aka, Gbaya case studies",
+          "source": "UN Women / Academic Sources",
+          "link": "https://oxfordre.com/africanhistory",
+          "notes": "Illustrative cases (Asante, Aka, Gbaya)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Regional governance mechanisms data",
+          "value": "Africa's Governance Futures analysis",
+          "source": "AU / APRM / ECA",
+          "link": "https://au.int/en/documents/2021-africa-governance-report",
+          "notes": "Basis for policy discussion and recommendations",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Devolution impact on service delivery (Kenya)",
+          "value": "Governance reform example",
+          "source": "World Bank",
+          "link": "https://documents.worldbank.org",
+          "notes": "Example of UN-supported governance reform",
+          "cluster": "conflict"
+        },
+        {
+          "name": "UN local mediation and state authority tools",
+          "value": "Transhumance-related violence prevention",
+          "source": "UN DPO / MSU",
+          "link": "https://peacekeeping.un.org/en",
+          "notes": "Illustrates UN operational support for local governance",
+          "cluster": "conflict"
+        },
+        {
+          "name": "School feeding programs and state presence",
+          "value": "Community resilience & social cohesion data",
+          "source": "World Food Programme (WFP)",
+          "link": "https://www.wfp.org/publications",
+          "notes": "Evidence for community resilience & social cohesion",
+          "cluster": "conflict"
+        }
+      ],
+      "sources": [
+        {
+          "name": "ACLED",
+          "link": "https://acleddata.com/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "University of Kentucky",
+          "link": "https://www.uky.edu/",
+          "type": "Academic Institution"
+        },
+        {
+          "name": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "SDSN",
+          "link": "https://www.sdgindex.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "Afrobarometer",
+          "link": "https://www.afrobarometer.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "OECD",
+          "link": "https://www.oecd.org/",
+          "type": "International Organization"
+        },
+        {
+          "name": "African Development Bank",
+          "link": "https://www.afdb.org/",
+          "type": "Regional Development Bank"
+        },
+        {
+          "name": "UN ECA",
+          "link": "https://www.uneca.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UN Women",
+          "link": "https://www.unwomen.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "African Union",
+          "link": "https://au.int/",
+          "type": "Regional Organization"
+        },
+        {
+          "name": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "UN DPO",
+          "link": "https://peacekeeping.un.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "World Food Programme",
+          "link": "https://www.wfp.org/",
+          "type": "UN Agency"
+        }
+      ]
+    },
+    {
+      "id": "coc_2023",
+      "title": "CoC 2023: Promotion of Durable Peace and Sustainable Development in Africa",
+      "year": "2023",
+      "link": "https://undocs.org/en/A/78/234",
+      "summary": "Comprehensive analysis of the intersection between peace, conflict, and sustainable development in Africa, with particular focus on COVID-19 impacts and recovery. The report examines poverty trends, conflict patterns, terrorism impacts, displacement, and the role of development in building resilience. It provides evidence-based insights on the economic costs of conflict, food insecurity, health impacts, and cross-pillar UN initiatives for sustainable peace.",
+      "cluster": "conflict",
+      "tags": [
+        "SDG",
+        "Development",
+        "Africa",
+        "Peace",
+        "Conflict",
+        "COVID-19",
+        "Poverty",
+        "Displacement"
+      ],
+      "indicators": [
+        {
+          "name": "Poverty impact of COVID-19",
+          "value": "23.6 million Africans pushed into extreme poverty in 2021",
+          "source": "UNDP / ECA / AU Commission",
+          "link": "https://hdl.handle.net/10855/48860",
+          "notes": "Quantifies poverty rise due to pandemic",
+          "cluster": "conflict"
+        },
+        {
+          "name": "GDP per capita growth",
+          "value": "1.6 → 1.4% (2021-2023)",
+          "source": "UN DESA",
+          "link": "https://desapublications.un.org",
+          "notes": "Used to assess income stagnation",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Progress toward SDGs",
+          "value": "2022 African SDG performance",
+          "source": "SDSN / Cambridge University Press",
+          "link": "https://www.sdgindex.org/reports/2022",
+          "notes": "Figure I — Africa's SDG performance",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Conflict incidents and fatalities",
+          "value": "2018-2022 data",
+          "source": "ACLED",
+          "link": "https://acleddata.com",
+          "notes": "Figures II & III — conflict trends by region",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Terrorism deaths and impact",
+          "value": "2007–2021 data",
+          "source": "UNDP / Institute for Economics & Peace",
+          "link": "https://www.undp.org/africa",
+          "notes": "Used for regional terrorism and economic loss figures",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Refugees and IDPs",
+          "value": "7 million refugees and 9 million IDPs in Africa (2022)",
+          "source": "UNHCR / IDMC",
+          "link": "https://www.unhcr.org/globaltrends",
+          "notes": "Figures for 7 million refugees and 9 million IDPs in Africa",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Fragile and conflict-affected States",
+          "value": "2023 FCS list",
+          "source": "World Bank",
+          "link": "https://thedocs.worldbank.org/en/doc/69b1d088e3c48ebe2cdf451e30284f04-0090082022/original/FCSList-FY23.pdf",
+          "notes": "Cited for Goal progress and fragility classification",
+          "cluster": "conflict"
+        },
+        {
+          "name": "GDP growth and poverty",
+          "value": "2022 data with inflation and energy crises impact",
+          "source": "AfDB",
+          "link": "https://www.afdb.org/en/documents",
+          "notes": "Quantifies impact of inflation and energy crises",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Poverty and conflict linkages",
+          "value": "Poverty-conflict nexus analysis",
+          "source": "World Bank",
+          "link": "https://openknowledge.worldbank.org/handle/10986/33324",
+          "notes": "Source for poverty conflict nexus",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Economic impact of violent extremism",
+          "value": "Economic losses and sectoral impacts",
+          "source": "UNDP & Institute for Economics and Peace",
+          "link": "https://www.undp.org/africa/publications",
+          "notes": "Quantifies losses and sectoral impacts",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Food insecurity",
+          "value": "2014-2022 prevalence data",
+          "source": "FAO / WFP / Nature Food Study",
+          "link": "https://www.fao.org/publications",
+          "notes": "Figure IV — Prevalence of food insecurity",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Health impacts of conflict (Sahel)",
+          "value": "Health service disruption analysis",
+          "source": "WHO / Brookings",
+          "link": "https://www.who.int/publications",
+          "notes": "Used for health service disruption analysis",
+          "cluster": "conflict"
+        },
+        {
+          "name": "School closures and attacks",
+          "value": "12,400 school closures (2021–2022)",
+          "source": "UNESCO / Education in Emergencies Working Group",
+          "link": "https://education4resilience.iiep.unesco.org",
+          "notes": "Figures for 12,400 school closures",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Security investment vs. development spending",
+          "value": "Military vs human security budget comparison",
+          "source": "UN-Women / AfDB / UNDP",
+          "link": "https://www.unwomen.org",
+          "notes": "Quantitative comparison of budgets by sector",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Employment and informality",
+          "value": "Employment rate, informality, working poverty data",
+          "source": "ILO ILOSTAT",
+          "link": "https://ilostat.ilo.org/data/africa",
+          "notes": "Data for employment rate, informality, working poverty",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Inequality and wealth distribution",
+          "value": "2000–2020 growth inequality and HDI losses",
+          "source": "UNCTAD / UNDP",
+          "link": "https://unctad.org/edaar2021",
+          "notes": "Used to show growth inequality and HDI losses",
+          "cluster": "conflict"
+        },
+        {
+          "name": "COVID-19 impact on jobs",
+          "value": "30 million jobs lost",
+          "source": "AfDB",
+          "link": "https://www.afdb.org",
+          "notes": "Used to link job loss to fragility and grievance",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Climate change and GBV linkages",
+          "value": "Resource scarcity and violence connections",
+          "source": "OCHA / UNICEF",
+          "link": "https://reliefweb.int",
+          "notes": "Links resource scarcity and violence",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Decent work projects and youth training",
+          "value": "Cross-pillar UN initiatives",
+          "source": "ILO / UNHCR / UNESCO / IOM / AUDA / FAO / IFAD / WFP",
+          "link": "https://www.ilo.org/global/topics/decent-work/lang–en/index.htm",
+          "notes": "Examples of UN cross-pillar initiatives",
+          "cluster": "conflict"
+        }
+      ],
+      "sources": [
+        {
+          "name": "UNDP",
+          "link": "https://www.undp.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UN ECA",
+          "link": "https://www.uneca.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "African Union Commission",
+          "link": "https://au.int/",
+          "type": "Regional Organization"
+        },
+        {
+          "name": "UN DESA",
+          "link": "https://www.un.org/development/desa/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "SDSN",
+          "link": "https://www.sdgindex.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "ACLED",
+          "link": "https://acleddata.com/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "Institute for Economics and Peace",
+          "link": "https://www.visionofhumanity.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "UNHCR",
+          "link": "https://www.unhcr.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "IDMC",
+          "link": "https://www.internal-displacement.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "African Development Bank",
+          "link": "https://www.afdb.org/",
+          "type": "Regional Development Bank"
+        },
+        {
+          "name": "FAO",
+          "link": "https://www.fao.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "WFP",
+          "link": "https://www.wfp.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "WHO",
+          "link": "https://www.who.int/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UNESCO",
+          "link": "https://www.unesco.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UN-Women",
+          "link": "https://www.unwomen.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "ILO",
+          "link": "https://www.ilo.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UNCTAD",
+          "link": "https://unctad.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "OCHA",
+          "link": "https://www.unocha.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UNICEF",
+          "link": "https://www.unicef.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "IOM",
+          "link": "https://www.iom.int/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "IFAD",
+          "link": "https://www.ifad.org/",
+          "type": "UN Agency"
+        }
+      ]
+    },
+    {
+      "id": "coc_2024",
+      "title": "CoC 2024 - Promotion of Durable Peace through Sustainable Development in Africa",
+      "year": "2024",
+      "link": "https://undocs.org/en/A/79/226",
+      "summary": "Comprehensive analysis of the intersection between migration, climate fragility, governance, and access to justice in Africa. The report examines displacement trends, climate-related conflicts, governance deterioration, and the critical role of inclusive justice systems in building sustainable peace. It provides evidence-based insights on migration drivers, climate vulnerability, gender justice gaps, and the economic costs of conflict and inequality.",
+      "cluster": "conflict",
+      "tags": [
+        "SDG",
+        "Development",
+        "Africa",
+        "Peace",
+        "Migration",
+        "Climate",
+        "Governance",
+        "Justice",
+        "Inequality"
+      ],
+      "indicators": [
+        {
+          "name": "Migration and displacement trends",
+          "value": "Africa Migration Report 2024 data",
+          "source": "IOM & African Union",
+          "link": "https://publications.iom.int/",
+          "notes": "Quantifies migration and displacement across Africa due to conflict and climate shocks",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Climate fragility data",
+          "value": "Climate-related economic and conflict vulnerability",
+          "source": "IMF",
+          "link": "https://www.imf.org",
+          "notes": "Provides climate-related economic and conflict vulnerability data",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Governance deterioration statistics",
+          "value": "70% of population affected by decline in security and rule of law",
+          "source": "Mo Ibrahim Foundation",
+          "link": "https://iiag.online/",
+          "notes": "Indicates decline in security and rule of law indicators (70% of population affected)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Conflict incidents and fatalities",
+          "value": "2019–2023 incident trends",
+          "source": "ACLED",
+          "link": "https://acleddata.com/",
+          "notes": "Used in Figures I & II for incident trends (2019–2023)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Humanitarian data for Sudan crisis",
+          "value": "8 million displaced, 25 million in need",
+          "source": "OCHA",
+          "link": "https://reliefweb.int/",
+          "notes": "Provides displacement and humanitarian figures (8 million displaced, 25 million in need)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Terrorism data (fatalities, incidents)",
+          "value": "Sahel accounts for half of global deaths",
+          "source": "Institute for Economics and Peace (IEP)",
+          "link": "https://www.visionofhumanity.org",
+          "notes": "Used to show Africa's terrorism trends (Sahel accounts for half of global deaths)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "SDG progress and rankings",
+          "value": "2023 SDG progress and regional comparison",
+          "source": "Sustainable Development Solutions Network (SDSN)",
+          "link": "https://www.sdgindex.org/reports/2023",
+          "notes": "Figure III – Progress and regional SDG comparison",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Poverty & fragility data",
+          "value": "People living near conflict and poverty correlation",
+          "source": "World Bank",
+          "link": "https://openknowledge.worldbank.org/handle/10986/33324",
+          "notes": "Defines 'people living near conflict' and poverty correlation",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Conflict dataset reference",
+          "value": "Methodology for proximity to conflict",
+          "source": "Uppsala Conflict Data Programme (UCDP)",
+          "link": "https://ucdp.uu.se/encyclopedia",
+          "notes": "Used to define methodology for proximity to conflict",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Global SDG statistics",
+          "value": "Goal achievement comparison data",
+          "source": "UN Statistics Division (UNSD)",
+          "link": "https://unstats.un.org/sdgs/dataportal",
+          "notes": "Used for Figure IV – Goal achievement comparison",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Human Development Index data",
+          "value": "Human development and multidimensional poverty comparison",
+          "source": "UNDP & Oxford Poverty and Human Development Initiative",
+          "link": "https://hdr.undp.org/data-center",
+          "notes": "Used for Figure V – Human development and multidimensional poverty comparison",
+          "cluster": "conflict"
+        },
+        {
+          "name": "GDP growth and inequality",
+          "value": "Inequality, redistribution, and poverty–growth data",
+          "source": "World Bank",
+          "link": "https://www.worldbank.org/en/region/afr/publication/africas-pulse",
+          "notes": "Provides inequality, redistribution, and poverty–growth data",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Governance and economic opportunity data",
+          "value": "Correlation between rule of law and economic opportunity",
+          "source": "Mo Ibrahim Foundation",
+          "link": "https://iiag.online",
+          "notes": "Correlation between rule of law and economic opportunity (Figure VIII)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Gender inequality in legal frameworks",
+          "value": "Gender gaps in access to justice and economic rights",
+          "source": "World Bank",
+          "link": "https://wbl.worldbank.org/en/reports",
+          "notes": "Used for gender gaps in access to justice and economic rights",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Income inequality & Gini index",
+          "value": "Inequality before the law and economic disparity",
+          "source": "World Bank",
+          "link": "https://documents.worldbank.org/en/publication",
+          "notes": "Used for Figure IX – Inequality before the law and economic disparity",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Gender justice analysis",
+          "value": "Gendered access to justice data",
+          "source": "UN-Women",
+          "link": "https://www.unwomen.org",
+          "notes": "Used in paragraph 39 for gendered access to justice",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Refugee legal rights and access",
+          "value": "Refugee and IDP legal access and property rights",
+          "source": "UNHCR",
+          "link": "https://www.unhcr.org",
+          "notes": "Used for refugee and IDP legal access and property rights",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Judicial corruption perceptions",
+          "value": "Public perception of corruption in judiciary",
+          "source": "Afrobarometer",
+          "link": "https://www.afrobarometer.org",
+          "notes": "Figure X – Public perception of corruption in judiciary",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Violent extremism motivations",
+          "value": "Grievance-based recruitment data",
+          "source": "UNDP",
+          "link": "https://www.undp.org/africa",
+          "notes": "Used for grievance-based recruitment data",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Drug trafficking trends",
+          "value": "Organized crime and trafficking in Sahel",
+          "source": "UNODC",
+          "link": "https://www.unodc.org/unodc/en/data-and-analysis/",
+          "notes": "Cited for organized crime and trafficking in Sahel",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Democracy attitudes",
+          "value": "Disapproval of military rule, democracy preference",
+          "source": "Afrobarometer",
+          "link": "https://www.afrobarometer.org",
+          "notes": "Figure XII – Disapproval of military rule, democracy preference",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Coup perceptions and tolerance",
+          "value": "Perception surveys post-coup",
+          "source": "UNDP",
+          "link": "https://www.undp.org/publications",
+          "notes": "Cited for perception surveys post-coup",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Access to justice cost comparison",
+          "value": "KSh 32,689 vs. 2,500 (formal vs informal justice)",
+          "source": "World Bank / Kenya National Bureau of Statistics",
+          "link": "https://statistics.knbs.or.ke/nada",
+          "notes": "Used for cost comparison between formal and informal justice (KSh 32,689 vs. 2,500)",
+          "cluster": "conflict"
+        },
+        {
+          "name": "Customary justice and women's participation",
+          "value": "Botswana and Namibia examples of inclusive justice",
+          "source": "International Development Law Organization (IDLO)",
+          "link": "https://www.idlo.int/publications",
+          "notes": "Cited for Botswana and Namibia examples of inclusive justice",
+          "cluster": "conflict"
+        }
+      ],
+      "sources": [
+        {
+          "name": "IOM",
+          "link": "https://www.iom.int/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "African Union",
+          "link": "https://au.int/",
+          "type": "Regional Organization"
+        },
+        {
+          "name": "IMF",
+          "link": "https://www.imf.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "Mo Ibrahim Foundation",
+          "link": "https://mo.ibrahim.foundation/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "ACLED",
+          "link": "https://acleddata.com/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "OCHA",
+          "link": "https://www.unocha.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "Institute for Economics and Peace",
+          "link": "https://www.visionofhumanity.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "SDSN",
+          "link": "https://www.sdgindex.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "World Bank",
+          "link": "https://www.worldbank.org/",
+          "type": "International Financial Institution"
+        },
+        {
+          "name": "UCDP",
+          "link": "https://ucdp.uu.se/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "UN Statistics Division",
+          "link": "https://unstats.un.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UNDP",
+          "link": "https://www.undp.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UN-Women",
+          "link": "https://www.unwomen.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "UNHCR",
+          "link": "https://www.unhcr.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "Afrobarometer",
+          "link": "https://www.afrobarometer.org/",
+          "type": "Research Organization"
+        },
+        {
+          "name": "UNODC",
+          "link": "https://www.unodc.org/",
+          "type": "UN Agency"
+        },
+        {
+          "name": "IDLO",
+          "link": "https://www.idlo.int/",
+          "type": "International Organization"
+        }
+      ]
+    }
+  ]
+}

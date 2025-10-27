@@ -8,41 +8,41 @@ let currentPage = 1;
 let itemsPerPage = 20;
 
 // Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
-    loadIndicators();
-    loadReports();
-    
-    // Check for URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const clusterParam = urlParams.get('cluster');
-    
-    if (clusterParam) {
-        // Wait for elements to be available
-        setTimeout(() => {
-            const clusterFilter = document.getElementById('clusterFilter');
-            if (clusterFilter) {
-                clusterFilter.value = clusterParam;
-                handleFilter();
-            }
-        }, 200);
-    } else {
-        renderClusters();
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        // Load data using the data loader
+        await window.dataLoader.loadAll();
+        
+        // Get data from the loader
+        indicators = window.dataLoader.getIndicators();
+        reports = window.dataLoader.getReports();
+        filteredIndicators = [...indicators];
+        filteredReports = [...reports];
+        
+        // Check for URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const clusterParam = urlParams.get('cluster');
+        
+        if (clusterParam) {
+            // Wait for elements to be available
+            setTimeout(() => {
+                const clusterFilter = document.getElementById('clusterFilter');
+                if (clusterFilter) {
+                    clusterFilter.value = clusterParam;
+                    handleFilter();
+                }
+            }, 200);
+        } else {
+            renderClusters();
+        }
+        
+        updateStats();
+        setupEventListeners();
+    } catch (error) {
+        console.error('Error initializing application:', error);
+        showError('Failed to load data. Please refresh the page.');
     }
-    
-    updateStats();
 });
-
-// Load indicators from data.js
-function loadIndicators() {
-    indicators = window.indicatorsData || [];
-    filteredIndicators = [...indicators];
-}
-
-// Load reports from reports-data.js
-function loadReports() {
-    reports = window.reportsData || [];
-    filteredReports = [...reports];
-}
 
 // Setup event listeners
 function setupEventListeners() {
@@ -95,6 +95,26 @@ function setupEventListeners() {
     }, 100);
 }
 
+// Error handling
+function showError(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.innerHTML = `
+        <div class="error-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    document.body.insertBefore(errorDiv, document.body.firstChild);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (errorDiv.parentNode) {
+            errorDiv.parentNode.removeChild(errorDiv);
+        }
+    }, 5000);
+}
+
 // Handle search functionality
 function handleSearch(event) {
     const searchTerm = event.target.value.toLowerCase();
@@ -104,11 +124,11 @@ function handleSearch(event) {
     filteredIndicators = indicators.filter(indicator => {
         const matchesSearch = !searchTerm || 
             indicator.name.toLowerCase().includes(searchTerm) ||
-            indicator.theme.toLowerCase().includes(searchTerm) ||
+            (indicator.theme && indicator.theme.toLowerCase().includes(searchTerm)) ||
             indicator.description.toLowerCase().includes(searchTerm) ||
             indicator.cluster.toLowerCase().includes(searchTerm);
         
-        const matchesCluster = !clusterFilter || indicator.cluster === clusterFilter;
+        const matchesCluster = !clusterValue || indicator.cluster === clusterValue;
         
         return matchesSearch && matchesCluster;
     });
@@ -156,16 +176,20 @@ function filterIndicators() {
     const clusterFilter = document.getElementById('indicatorClusterFilter')?.value || '';
     const sourceFilter = document.getElementById('indicatorSourceFilter')?.value || '';
     
-    filteredIndicators = indicators.filter(indicator => {
-        const matchesSearch = !searchTerm || 
-            indicator.name.toLowerCase().includes(searchTerm) ||
-            indicator.description.toLowerCase().includes(searchTerm) ||
-            indicator.source.toLowerCase().includes(searchTerm);
-        
+    // Use data loader search if there's a search term
+    if (searchTerm) {
+        filteredIndicators = window.dataLoader.searchIndicators(searchTerm);
+    } else {
+        filteredIndicators = [...indicators];
+    }
+    
+    // Apply additional filters
+    filteredIndicators = filteredIndicators.filter(indicator => {
         const matchesCluster = !clusterFilter || indicator.cluster === clusterFilter;
-        const matchesSource = !sourceFilter || indicator.source.toLowerCase().includes(sourceFilter.toLowerCase());
+        const matchesSource = !sourceFilter || 
+            (indicator.source && indicator.source.toLowerCase().includes(sourceFilter.toLowerCase()));
         
-        return matchesSearch && matchesCluster && matchesSource;
+        return matchesCluster && matchesSource;
     });
     
     renderIndicatorsList();
@@ -550,22 +574,24 @@ function filterReports() {
     const sourceFilter = document.getElementById('sourceFilter').value;
     const tagFilter = document.getElementById('tagFilter').value;
     
-    filteredReports = reports.filter(report => {
-        const matchesSearch = !searchTerm || 
-            report.title.toLowerCase().includes(searchTerm) ||
-            report.summary.toLowerCase().includes(searchTerm) ||
-            report.indicators.some(ind => ind.name.toLowerCase().includes(searchTerm)) ||
-            report.indicators.some(ind => ind.source.toLowerCase().includes(searchTerm));
-        
+    // Use data loader search if there's a search term
+    if (searchTerm) {
+        filteredReports = window.dataLoader.searchReports(searchTerm);
+    } else {
+        filteredReports = [...reports];
+    }
+    
+    // Apply additional filters
+    filteredReports = filteredReports.filter(report => {
         const matchesCluster = !clusterFilter || report.cluster === clusterFilter;
         
         const matchesSource = !sourceFilter || 
-            report.indicators.some(ind => ind.source.toLowerCase().includes(sourceFilter.toLowerCase()));
+            report.indicators.some(ind => ind.source && ind.source.toLowerCase().includes(sourceFilter.toLowerCase()));
         
         const matchesTag = !tagFilter || 
             report.tags.some(tag => tag.toLowerCase() === tagFilter.toLowerCase());
         
-        return matchesSearch && matchesCluster && matchesSource && matchesTag;
+        return matchesCluster && matchesSource && matchesTag;
     });
     
     renderReports();

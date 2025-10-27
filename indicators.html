@@ -149,7 +149,7 @@
 
     <div id="footer-placeholder"></div>
 
-    <script src="data.js"></script>
+    <script src="data-loader.js"></script>
     <script src="script.js"></script>
     <script>
         // Load shared components
@@ -159,10 +159,10 @@
                 .then(data => {
                     document.getElementById('header-placeholder').innerHTML = data;
                     // Set active navigation
-                    document.getElementById('indicatorsLink').classList.add('active');
-                    document.getElementById('reportsLink').classList.remove('active');
-                    // Setup event listeners after header is loaded
-                    setupEventListeners();
+                    const indicatorsLink = document.getElementById('indicatorsLink');
+                    const reportsLink = document.getElementById('reportsLink');
+                    if (indicatorsLink) indicatorsLink.classList.add('active');
+                    if (reportsLink) reportsLink.classList.remove('active');
                 });
             
             fetch('shared/footer.html')
@@ -174,10 +174,7 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            loadIndicators();
             loadSharedComponents();
-            renderClusters();
-            updateStats();
         });
     </script>
 </body>

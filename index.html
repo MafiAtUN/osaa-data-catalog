@@ -254,17 +254,25 @@
             }
         }
 
-        // Load indicators from data.js
-        function loadIndicators() {
-            if (typeof window.indicatorsData !== 'undefined') {
-                window.indicators = window.indicatorsData || [];
+        // Load indicators using data loader
+        async function loadIndicators() {
+            try {
+                await window.dataLoader.loadAll();
+                window.indicators = window.dataLoader.getIndicators();
+            } catch (error) {
+                console.error('Error loading indicators:', error);
+                window.indicators = [];
             }
         }
 
-        // Load reports from reports-data.js
-        function loadReports() {
-            if (typeof window.reportsData !== 'undefined') {
-                window.reports = window.reportsData || [];
+        // Load reports using data loader
+        async function loadReports() {
+            try {
+                await window.dataLoader.loadAll();
+                window.reports = window.dataLoader.getReports();
+            } catch (error) {
+                console.error('Error loading reports:', error);
+                window.reports = [];
             }
         }
 
@@ -289,24 +297,28 @@
                 reports: []
             };
             
-            // Search indicators
-            if (window.indicators) {
+            // Search indicators using data loader
+            if (window.dataLoader && window.dataLoader.loaded) {
+                results.indicators = window.dataLoader.searchIndicators(searchTerm).slice(0, 5);
+            } else if (window.indicators) {
                 results.indicators = window.indicators.filter(indicator => 
                     indicator.name.toLowerCase().includes(searchTerm) ||
-                    indicator.theme.toLowerCase().includes(searchTerm) ||
+                    (indicator.theme && indicator.theme.toLowerCase().includes(searchTerm)) ||
                     indicator.description.toLowerCase().includes(searchTerm) ||
                     indicator.cluster.toLowerCase().includes(searchTerm) ||
-                    indicator.source.toLowerCase().includes(searchTerm)
-                ).slice(0, 5); // Limit to 5 results
+                    (indicator.source && indicator.source.toLowerCase().includes(searchTerm))
+                ).slice(0, 5);
             }
             
-            // Search reports
-            if (window.reports) {
+            // Search reports using data loader
+            if (window.dataLoader && window.dataLoader.loaded) {
+                results.reports = window.dataLoader.searchReports(searchTerm).slice(0, 3);
+            } else if (window.reports) {
                 results.reports = window.reports.filter(report => 
                     report.title.toLowerCase().includes(searchTerm) ||
                     report.summary.toLowerCase().includes(searchTerm) ||
                     report.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-                ).slice(0, 3); // Limit to 3 results
+                ).slice(0, 3);
             }
             
             return results;
@@ -426,5 +438,6 @@
             }
         }
     </script>
+    <script src="data-loader.js"></script>
 </body>
 </html>

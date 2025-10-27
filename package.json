@@ -1,0 +1,38 @@
+{
+  "name": "un-osaa-data-catalog",
+  "version": "1.0.0",
+  "description": "A comprehensive data catalog for the United Nations Office of the Special Adviser on Africa (UN OSAA)",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploy to GitHub Pages by pushing to main branch'"
+  },
+  "keywords": [
+    "un",
+    "osaa",
+    "africa",
+    "data",
+    "catalog",
+    "indicators",
+    "development",
+    "sustainable-development",
+    "united-nations"
+  ],
+  "author": "UN OSAA Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/un-osaa-data-catalog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/un-osaa-data-catalog/issues"
+  },
+  "homepage": "https://your-username.github.io/un-osaa-data-catalog",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

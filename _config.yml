@@ -1,0 +1,48 @@
+# GitHub Pages Configuration for UN OSAA Data Catalog
+
+# Site settings
+title: "UN OSAA Data Catalog"
+description: "A comprehensive data catalog for the United Nations Office of the Special Adviser on Africa"
+url: "https://your-username.github.io/un-osaa-data-catalog"
+baseurl: "/un-osaa-data-catalog"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Collections
+collections:
+  indicators:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "indicators"
+    values:
+      layout: "indicator"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata

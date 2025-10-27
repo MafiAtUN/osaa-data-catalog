@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - UN OSAA Data Catalog</title>
+    <link rel="icon" type="image/svg+xml" href="OSAA identifier color.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="reports-section">
+                <div class="reports-header">
+                    <h2>UN OSAA Reports & Data Sources</h2>
+                    <p>Explore published reports and their associated data sources, indicators, and methodologies</p>
+                </div>
+
+                <div class="reports-filters">
+                    <div class="filter-group">
+                        <label for="reportDropdown">Select Report:</label>
+                        <div class="dropdown-container">
+                            <input type="text" id="reportDropdown" placeholder="Search and select a report..." autocomplete="off">
+                            <div class="dropdown-arrow">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="dropdown-menu" id="reportDropdownMenu">
+                                <!-- Reports will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label for="reportSearch">Search Content:</label>
+                        <input type="text" id="reportSearch" placeholder="Search by indicator, source, or content...">
+                    </div>
+                    <div class="filter-group">
+                        <label for="reportClusterFilter">Filter by Cluster:</label>
+                        <select id="reportClusterFilter">
+                            <option value="">All Clusters</option>
+                            <option value="financing">Financing for Development</option>
+                            <option value="conflict">Addressing Drivers of Conflict</option>
+                            <option value="democracy">Democracy, Resilience, and Human Capital</option>
+                            <option value="sti">Science, Technology, and Innovation</option>
+                            <option value="industrialization">Industrialization and AfCFTA</option>
+                            <option value="energy">Sustainable Energy and Climate Change</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sourceFilter">Filter by Source:</label>
+                        <select id="sourceFilter">
+                            <option value="">All Sources</option>
+                            <option value="World Bank">World Bank</option>
+                            <option value="UNCTAD">UNCTAD</option>
+                            <option value="IMF">IMF</option>
+                            <option value="African Union">African Union</option>
+                            <option value="OECD">OECD</option>
+                            <option value="UN">UN</option>
+                            <option value="UNESCO">UNESCO</option>
+                            <option value="PERI">PERI</option>
+                            <option value="Afreximbank">Afreximbank</option>
+                            <option value="African Development Bank">African Development Bank</option>
+                            <option value="IEA">IEA</option>
+                            <option value="IRENA">IRENA</option>
+                            <option value="FAO">FAO</option>
+                            <option value="ILO">ILO</option>
+                            <option value="Mo Ibrahim Foundation">Mo Ibrahim Foundation</option>
+                            <option value="PWC">PWC</option>
+                            <option value="UN ECA">UN ECA</option>
+                            <option value="Afrobarometer">Afrobarometer</option>
+                            <option value="ACLED">ACLED</option>
+                            <option value="SDSN">SDSN</option>
+                            <option value="Institute for Economics and Peace">Institute for Economics and Peace</option>
+                            <option value="IDLO">IDLO</option>
+                            <option value="University of Kentucky">University of Kentucky</option>
+                            <option value="OECD">OECD</option>
+                            <option value="UN Women">UN Women</option>
+                            <option value="African Union">African Union</option>
+                            <option value="UN DPO">UN DPO</option>
+                            <option value="World Food Programme">World Food Programme</option>
+                            <option value="UN DESA">UN DESA</option>
+                            <option value="UNHCR">UNHCR</option>
+                            <option value="IDMC">IDMC</option>
+                            <option value="WHO">WHO</option>
+                            <option value="UNESCO">UNESCO</option>
+                            <option value="UN-Women">UN-Women</option>
+                            <option value="UNCTAD">UNCTAD</option>
+                            <option value="OCHA">OCHA</option>
+                            <option value="UNICEF">UNICEF</option>
+                            <option value="IOM">IOM</option>
+                            <option value="IFAD">IFAD</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="tagFilter">Filter by Tags:</label>
+                        <select id="tagFilter">
+                            <option value="">All Tags</option>
+                            <option value="SDG">SDG</option>
+                            <option value="Financing">Financing</option>
+                            <option value="Governance">Governance</option>
+                            <option value="Trade">Trade</option>
+                            <option value="Climate">Climate</option>
+                            <option value="Debt">Debt</option>
+                            <option value="Sustainability">Sustainability</option>
+                            <option value="COVID-19">COVID-19</option>
+                            <option value="Domestic Resources">Domestic Resources</option>
+                            <option value="Energy">Energy</option>
+                            <option value="Food Systems">Food Systems</option>
+                            <option value="Paradoxes">Paradoxes</option>
+                            <option value="Peace">Peace</option>
+                            <option value="Governance">Governance</option>
+                            <option value="Conflict Prevention">Conflict Prevention</option>
+                            <option value="Social Contract">Social Contract</option>
+                            <option value="Conflict">Conflict</option>
+                            <option value="Sustainable Development">Sustainable Development</option>
+                            <option value="Traditional Institutions">Traditional Institutions</option>
+                            <option value="COVID-19">COVID-19</option>
+                            <option value="Poverty">Poverty</option>
+                            <option value="Displacement">Displacement</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="reports-grid" id="reportsGrid">
+                    <!-- Reports will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="data.js"></script>
+    <script src="reports-data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Load shared components
+        function loadSharedComponents() {
+            fetch('shared/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    // Set active navigation
+                    document.getElementById('reportsLink').classList.add('active');
+                    document.getElementById('indicatorsLink').classList.remove('active');
+                    // Setup event listeners after header is loaded
+                    setupEventListeners();
+                });
+            
+            fetch('shared/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadIndicators();
+            loadReports();
+            loadSharedComponents();
+            renderReports();
+        });
+    </script>
+</body>
+</html>

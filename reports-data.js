@@ -1689,5 +1689,295 @@ window.reportsData = [
                 type: "UN Agency"
             }
         ]
+    },
+    {
+        id: "coc_2024",
+        title: "CoC 2024 - Promotion of Durable Peace through Sustainable Development in Africa",
+        year: "2024",
+        link: "https://undocs.org/en/A/79/226",
+        summary: "Comprehensive analysis of the intersection between migration, climate fragility, governance, and access to justice in Africa. The report examines displacement trends, climate-related conflicts, governance deterioration, and the critical role of inclusive justice systems in building sustainable peace. It provides evidence-based insights on migration drivers, climate vulnerability, gender justice gaps, and the economic costs of conflict and inequality.",
+        cluster: "conflict",
+        tags: ["SDG", "Development", "Africa", "Peace", "Migration", "Climate", "Governance", "Justice", "Inequality"],
+        indicators: [
+            {
+                name: "Migration and displacement trends",
+                value: "Africa Migration Report 2024 data",
+                source: "IOM & African Union",
+                link: "https://publications.iom.int/",
+                notes: "Quantifies migration and displacement across Africa due to conflict and climate shocks",
+                cluster: "conflict"
+            },
+            {
+                name: "Climate fragility data",
+                value: "Climate-related economic and conflict vulnerability",
+                source: "IMF",
+                link: "https://www.imf.org",
+                notes: "Provides climate-related economic and conflict vulnerability data",
+                cluster: "conflict"
+            },
+            {
+                name: "Governance deterioration statistics",
+                value: "70% of population affected by decline in security and rule of law",
+                source: "Mo Ibrahim Foundation",
+                link: "https://iiag.online/",
+                notes: "Indicates decline in security and rule of law indicators (70% of population affected)",
+                cluster: "conflict"
+            },
+            {
+                name: "Conflict incidents and fatalities",
+                value: "2019–2023 incident trends",
+                source: "ACLED",
+                link: "https://acleddata.com/",
+                notes: "Used in Figures I & II for incident trends (2019–2023)",
+                cluster: "conflict"
+            },
+            {
+                name: "Humanitarian data for Sudan crisis",
+                value: "8 million displaced, 25 million in need",
+                source: "OCHA",
+                link: "https://reliefweb.int/",
+                notes: "Provides displacement and humanitarian figures (8 million displaced, 25 million in need)",
+                cluster: "conflict"
+            },
+            {
+                name: "Terrorism data (fatalities, incidents)",
+                value: "Sahel accounts for half of global deaths",
+                source: "Institute for Economics and Peace (IEP)",
+                link: "https://www.visionofhumanity.org",
+                notes: "Used to show Africa's terrorism trends (Sahel accounts for half of global deaths)",
+                cluster: "conflict"
+            },
+            {
+                name: "SDG progress and rankings",
+                value: "2023 SDG progress and regional comparison",
+                source: "Sustainable Development Solutions Network (SDSN)",
+                link: "https://www.sdgindex.org/reports/2023",
+                notes: "Figure III – Progress and regional SDG comparison",
+                cluster: "conflict"
+            },
+            {
+                name: "Poverty & fragility data",
+                value: "People living near conflict and poverty correlation",
+                source: "World Bank",
+                link: "https://openknowledge.worldbank.org/handle/10986/33324",
+                notes: "Defines 'people living near conflict' and poverty correlation",
+                cluster: "conflict"
+            },
+            {
+                name: "Conflict dataset reference",
+                value: "Methodology for proximity to conflict",
+                source: "Uppsala Conflict Data Programme (UCDP)",
+                link: "https://ucdp.uu.se/encyclopedia",
+                notes: "Used to define methodology for proximity to conflict",
+                cluster: "conflict"
+            },
+            {
+                name: "Global SDG statistics",
+                value: "Goal achievement comparison data",
+                source: "UN Statistics Division (UNSD)",
+                link: "https://unstats.un.org/sdgs/dataportal",
+                notes: "Used for Figure IV – Goal achievement comparison",
+                cluster: "conflict"
+            },
+            {
+                name: "Human Development Index data",
+                value: "Human development and multidimensional poverty comparison",
+                source: "UNDP & Oxford Poverty and Human Development Initiative",
+                link: "https://hdr.undp.org/data-center",
+                notes: "Used for Figure V – Human development and multidimensional poverty comparison",
+                cluster: "conflict"
+            },
+            {
+                name: "GDP growth and inequality",
+                value: "Inequality, redistribution, and poverty–growth data",
+                source: "World Bank",
+                link: "https://www.worldbank.org/en/region/afr/publication/africas-pulse",
+                notes: "Provides inequality, redistribution, and poverty–growth data",
+                cluster: "conflict"
+            },
+            {
+                name: "Governance and economic opportunity data",
+                value: "Correlation between rule of law and economic opportunity",
+                source: "Mo Ibrahim Foundation",
+                link: "https://iiag.online",
+                notes: "Correlation between rule of law and economic opportunity (Figure VIII)",
+                cluster: "conflict"
+            },
+            {
+                name: "Gender inequality in legal frameworks",
+                value: "Gender gaps in access to justice and economic rights",
+                source: "World Bank",
+                link: "https://wbl.worldbank.org/en/reports",
+                notes: "Used for gender gaps in access to justice and economic rights",
+                cluster: "conflict"
+            },
+            {
+                name: "Income inequality & Gini index",
+                value: "Inequality before the law and economic disparity",
+                source: "World Bank",
+                link: "https://documents.worldbank.org/en/publication",
+                notes: "Used for Figure IX – Inequality before the law and economic disparity",
+                cluster: "conflict"
+            },
+            {
+                name: "Gender justice analysis",
+                value: "Gendered access to justice data",
+                source: "UN-Women",
+                link: "https://www.unwomen.org",
+                notes: "Used in paragraph 39 for gendered access to justice",
+                cluster: "conflict"
+            },
+            {
+                name: "Refugee legal rights and access",
+                value: "Refugee and IDP legal access and property rights",
+                source: "UNHCR",
+                link: "https://www.unhcr.org",
+                notes: "Used for refugee and IDP legal access and property rights",
+                cluster: "conflict"
+            },
+            {
+                name: "Judicial corruption perceptions",
+                value: "Public perception of corruption in judiciary",
+                source: "Afrobarometer",
+                link: "https://www.afrobarometer.org",
+                notes: "Figure X – Public perception of corruption in judiciary",
+                cluster: "conflict"
+            },
+            {
+                name: "Violent extremism motivations",
+                value: "Grievance-based recruitment data",
+                source: "UNDP",
+                link: "https://www.undp.org/africa",
+                notes: "Used for grievance-based recruitment data",
+                cluster: "conflict"
+            },
+            {
+                name: "Drug trafficking trends",
+                value: "Organized crime and trafficking in Sahel",
+                source: "UNODC",
+                link: "https://www.unodc.org/unodc/en/data-and-analysis/",
+                notes: "Cited for organized crime and trafficking in Sahel",
+                cluster: "conflict"
+            },
+            {
+                name: "Democracy attitudes",
+                value: "Disapproval of military rule, democracy preference",
+                source: "Afrobarometer",
+                link: "https://www.afrobarometer.org",
+                notes: "Figure XII – Disapproval of military rule, democracy preference",
+                cluster: "conflict"
+            },
+            {
+                name: "Coup perceptions and tolerance",
+                value: "Perception surveys post-coup",
+                source: "UNDP",
+                link: "https://www.undp.org/publications",
+                notes: "Cited for perception surveys post-coup",
+                cluster: "conflict"
+            },
+            {
+                name: "Access to justice cost comparison",
+                value: "KSh 32,689 vs. 2,500 (formal vs informal justice)",
+                source: "World Bank / Kenya National Bureau of Statistics",
+                link: "https://statistics.knbs.or.ke/nada",
+                notes: "Used for cost comparison between formal and informal justice (KSh 32,689 vs. 2,500)",
+                cluster: "conflict"
+            },
+            {
+                name: "Customary justice and women's participation",
+                value: "Botswana and Namibia examples of inclusive justice",
+                source: "International Development Law Organization (IDLO)",
+                link: "https://www.idlo.int/publications",
+                notes: "Cited for Botswana and Namibia examples of inclusive justice",
+                cluster: "conflict"
+            }
+        ],
+        sources: [
+            {
+                name: "IOM",
+                link: "https://www.iom.int/",
+                type: "UN Agency"
+            },
+            {
+                name: "African Union",
+                link: "https://au.int/",
+                type: "Regional Organization"
+            },
+            {
+                name: "IMF",
+                link: "https://www.imf.org/",
+                type: "International Financial Institution"
+            },
+            {
+                name: "Mo Ibrahim Foundation",
+                link: "https://mo.ibrahim.foundation/",
+                type: "Research Organization"
+            },
+            {
+                name: "ACLED",
+                link: "https://acleddata.com/",
+                type: "Research Organization"
+            },
+            {
+                name: "OCHA",
+                link: "https://www.unocha.org/",
+                type: "UN Agency"
+            },
+            {
+                name: "Institute for Economics and Peace",
+                link: "https://www.visionofhumanity.org/",
+                type: "Research Organization"
+            },
+            {
+                name: "SDSN",
+                link: "https://www.sdgindex.org/",
+                type: "Research Organization"
+            },
+            {
+                name: "World Bank",
+                link: "https://www.worldbank.org/",
+                type: "International Financial Institution"
+            },
+            {
+                name: "UCDP",
+                link: "https://ucdp.uu.se/",
+                type: "Research Organization"
+            },
+            {
+                name: "UN Statistics Division",
+                link: "https://unstats.un.org/",
+                type: "UN Agency"
+            },
+            {
+                name: "UNDP",
+                link: "https://www.undp.org/",
+                type: "UN Agency"
+            },
+            {
+                name: "UN-Women",
+                link: "https://www.unwomen.org/",
+                type: "UN Agency"
+            },
+            {
+                name: "UNHCR",
+                link: "https://www.unhcr.org/",
+                type: "UN Agency"
+            },
+            {
+                name: "Afrobarometer",
+                link: "https://www.afrobarometer.org/",
+                type: "Research Organization"
+            },
+            {
+                name: "UNODC",
+                link: "https://www.unodc.org/",
+                type: "UN Agency"
+            },
+            {
+                name: "IDLO",
+                link: "https://www.idlo.int/",
+                type: "International Organization"
+            }
+        ]
     }
 ];

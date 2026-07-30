@@ -37,7 +37,8 @@ Advancing green growth, climate resilience, and renewable energy solutions.
 
 ## 🔍 Key Features
 
-- **Multi-Page Interface**: Home, Indicators, and Reports pages
+- **Multi-Page Interface**: Home, Indicators, Reports, and Sources pages
+- **Source Provenance Index**: Trace any data source to the knowledge products that used it
 - **Advanced Search**: Search by indicator name, cluster, source, or tags
 - **Report Tracking**: Complete catalog of UN OSAA reports with data sources
 - **Filtering System**: Filter by cluster, source, tags, and year
@@ -62,6 +63,39 @@ Advancing green growth, climate resilience, and renewable energy solutions.
 - **Hosting**: GitHub Pages
 - **Icons**: Font Awesome
 - **Architecture**: Multi-page with shared components
+
+## 🔗 Data Provenance
+
+The catalog tracks data usage in **both directions**:
+
+**Report → data** (`reports.json`, rendered on `reports.html`)
+Each of the 8 reports lists every data point it used. All 168 carry a value, a
+source attribution, a link to the dataset, and a usage note recording where in the
+report it appeared (e.g. *"Used in Figures I & II for incident trends (2019–2023)"*).
+
+**Data → report** (`sources.html`, built at runtime by `sources-index.js`)
+The reverse index resolves the 107 free-text source strings on those data points
+into **72 canonical organisations**, then shows, for each one, which knowledge
+products cited it and exactly which figures they drew. Every entry links out to
+the official UN document for the report and offers a copy-ready citation.
+
+The reverse index is **derived at page load rather than stored**, so it cannot
+drift from `reports.json`. Adding a report automatically extends the index.
+
+Source strings are messy by nature, so the parser handles four shapes:
+
+| Shape | Example | Resolves to |
+| --- | --- | --- |
+| Single organisation | `IMF` | IMF |
+| Co-sources | `IMF, OECD, ATAF, WDI` | IMF + OECD + ATAF + World Bank |
+| Dataset qualifier | `World Bank – Remittance Prices Worldwide` | World Bank |
+| Unattributed | `Academic research sources` | flagged for follow-up |
+
+Organisation names containing a separator (`Institute for Economics and Peace`,
+`University of Kentucky (Powell & Thyne)`) are protected before splitting, and
+acronyms and dataset names are folded into their parent body (`AfDB` → African
+Development Bank, `ILOSTAT` → ILO, `IIAG` → Mo Ibrahim Foundation). To add a
+mapping, edit `CANONICAL` or `PROTECTED_NAMES` in `sources-index.js`.
 
 ## 📋 Data Structure
 

@@ -1374,3 +1374,373 @@ body {
 .indicator-cluster.cluster-energy {
     background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
 }
+
+/* ===== Data Sources / provenance page ===== */
+.sources-page {
+    padding: 2rem 0;
+}
+
+.sources-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.sources-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    background: white;
+    padding: 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+}
+
+.sources-controls .search-container {
+    flex: 1 1 320px;
+    position: relative;
+}
+
+.sources-controls .search-container i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+}
+
+.sources-controls .search-container input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.sources-controls .search-container input:focus,
+.sources-controls select:focus {
+    outline: none;
+    border-color: #2a5298;
+}
+
+.sources-controls select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    background: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.sources-result-count {
+    color: #5a6c7d;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.sources-index-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.source-index-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1.75rem;
+    border-left: 5px solid #2a5298;
+}
+
+.source-index-card.is-unattributed {
+    border-left-color: #e67e22;
+}
+
+.source-index-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.source-index-title {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.source-avatar {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.source-index-title h3 {
+    font-size: 1.3rem;
+    color: #1e3c72;
+    margin-bottom: 0.4rem;
+}
+
+.source-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: #eef2f7;
+    color: #34495e;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-primary {
+    background: #2a5298;
+    color: white;
+}
+
+.badge-muted {
+    background: #f4f6f8;
+    color: #7f8c8d;
+}
+
+.source-home-link,
+.knowledge-product-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.source-home-link {
+    color: #2a5298;
+    border: 2px solid #d6e0ee;
+}
+
+.source-home-link:hover {
+    background: #f0f5fc;
+}
+
+.source-warning {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: #fff6e9;
+    border-left: 3px solid #e67e22;
+    border-radius: 6px;
+    color: #8a5100;
+    font-size: 0.9rem;
+}
+
+.source-attributions {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #5a6c7d;
+    line-height: 1.9;
+}
+
+.source-attributions code {
+    background: #f4f6f8;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #34495e;
+}
+
+.provenance-reports {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.provenance-report {
+    background: #f8fafc;
+    border: 1px solid #e6ecf2;
+    border-radius: 10px;
+    padding: 1.15rem;
+}
+
+.provenance-report-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.85rem;
+}
+
+.provenance-report-meta h4 {
+    font-size: 1rem;
+    color: #1e3c72;
+    line-height: 1.4;
+    margin: 0.2rem 0 0;
+}
+
+.provenance-year {
+    display: inline-block;
+    background: #1e3c72;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+}
+
+.knowledge-product-link {
+    background: #2a5298;
+    color: white;
+}
+
+.knowledge-product-link:hover {
+    background: #1e3c72;
+}
+
+.knowledge-product-link.is-missing {
+    background: #f4f6f8;
+    color: #95a5a6;
+    cursor: default;
+}
+
+.provenance-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.provenance-point {
+    background: white;
+    border: 1px solid #e6ecf2;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+}
+
+.provenance-point-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+}
+
+.provenance-point-name {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.provenance-value {
+    background: #eaf4ea;
+    color: #1e6b34;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.1rem 0.55rem;
+    border-radius: 4px;
+}
+
+.provenance-notes {
+    margin-top: 0.4rem;
+    font-size: 0.88rem;
+    color: #5a6c7d;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.provenance-point-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.7rem;
+}
+
+.provenance-cluster {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: white;
+    padding: 0.18rem 0.6rem;
+    border-radius: 999px;
+    background: #7f8c8d;
+}
+
+.provenance-co {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.provenance-data-link,
+.copy-ref-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid #d6e0ee;
+    background: white;
+    color: #2a5298;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.provenance-data-link:hover,
+.copy-ref-btn:hover {
+    background: #f0f5fc;
+}
+
+.copy-ref-btn.is-copied {
+    background: #1e6b34;
+    border-color: #1e6b34;
+    color: white;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #7f8c8d;
+}
+
+.loading-state i {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .sources-controls { flex-direction: column; align-items: stretch; }
+    .source-index-head { flex-direction: column; }
+    .provenance-report-head { flex-direction: column; }
+}
+
+/* Cluster pill colours - solid tones chosen for white-text contrast at badge size */
+.provenance-cluster.cluster-financing      { background: #5b4bb7; }
+.provenance-cluster.cluster-conflict       { background: #c0392b; }
+.provenance-cluster.cluster-democracy      { background: #1f7a8c; }
+.provenance-cluster.cluster-sti            { background: #1e7a46; }
+.provenance-cluster.cluster-industrialization { background: #a3436f; }
+.provenance-cluster.cluster-energy         { background: #a35c00; }

@@ -20,7 +20,7 @@
                 <input type="text" id="searchInput" placeholder="Search indicators, themes, or clusters...">
             </div>
             <div class="filter-container">
-                <select id="clusterFilter">
+                <select id="clusterFilter" aria-label="Filter by thematic cluster">
                     <option value="">All Clusters</option>
                     <option value="financing">Financing for Development</option>
                     <option value="conflict">Addressing Drivers of Conflict</option>
@@ -37,8 +37,11 @@
                 <a href="reports.html" class="nav-link" id="reportsLink">
                     <i class="fas fa-file-alt"></i> Reports
                 </a>
+                <a href="sources.html" class="nav-link" id="sourcesLink">
+                    <i class="fas fa-database"></i> Sources
+                </a>
             </div>
-            <button class="add-indicator-btn" onclick="showAddForm()">
+            <button type="button" class="add-indicator-btn" onclick="showAddForm()">
                 <i class="fas fa-plus"></i> Add Indicator
             </button>
         </div>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Sources - UN OSAA Data Catalog</title>
+    <link rel="icon" type="image/svg+xml" href="OSAA identifier color.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="sources-page">
+                <div class="reports-header">
+                    <h2>Data Sources &amp; Provenance</h2>
+                    <p>
+                        Trace every data source back to the UN OSAA knowledge products that used it.
+                        Each entry lists the reports the source appears in, the exact data points drawn
+                        from it, and a citation you can copy.
+                    </p>
+                </div>
+
+                <div class="sources-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-database"></i>
+                        <div class="stat-content">
+                            <h3 id="sourceCount">0</h3>
+                            <p>Data Sources</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-link"></i>
+                        <div class="stat-content">
+                            <h3 id="linkCount">0</h3>
+                            <p>Source &rarr; Report Links</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="stat-content">
+                            <h3 id="pointCount">0</h3>
+                            <p>Data Points Traced</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-recycle"></i>
+                        <div class="stat-content">
+                            <h3 id="reusedCount">0</h3>
+                            <p>Used in 2+ Reports</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sources-controls">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="sourceSearch"
+                               placeholder="Search a source, report, or indicator...">
+                    </div>
+                    <select id="sourceReportFilter">
+                        <option value="">All knowledge products</option>
+                    </select>
+                    <select id="sourceSort">
+                        <option value="reports">Sort: most knowledge products</option>
+                        <option value="points">Sort: most data points</option>
+                        <option value="name">Sort: name (A&ndash;Z)</option>
+                    </select>
+                </div>
+
+                <div id="sourcesResultCount" class="sources-result-count"></div>
+                <div id="sourcesList" class="sources-index-list">
+                    <div class="loading-state">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Building source index&hellip;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="data-loader.js"></script>
+    <script src="sources-index.js"></script>
+    <script src="sources-page.js"></script>
+    <script>
+        function loadSharedComponents() {
+            fetch('shared/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    const sourcesLink = document.getElementById('sourcesLink');
+                    const indicatorsLink = document.getElementById('indicatorsLink');
+                    if (sourcesLink) sourcesLink.classList.add('active');
+                    if (indicatorsLink) indicatorsLink.classList.remove('active');
+                });
+
+            fetch('shared/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            loadSharedComponents();
+            initSourcesPage();
+        });
+    </script>
+</body>
+</html>

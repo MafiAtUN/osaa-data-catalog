@@ -328,10 +328,20 @@
             '<p class="source-attributions">' + codes + '</p></details>';
     }
 
+    /** One "Dataset" button per source, labelled when we know which is which. */
+    function datasetLinks(point) {
+        return OSAA.pointLinks(point).map(entry =>
+            '<a class="provenance-data-link" href="' + OSAA.escapeHTML(entry.url) +
+            '" target="_blank" rel="noopener">' + OSAA.icon('database') +
+            OSAA.escapeHTML(entry.label || 'Dataset') +
+            '<span class="visually-hidden"> — ' + OSAA.escapeHTML(point.name) +
+            ' (opens in a new tab)</span></a>'
+        ).join('');
+    }
+
     function pointHTML(point, report) {
         const e = OSAA.escapeHTML;
         const reference = window.SourceIndex.formatReference(point.attribution, point, report);
-        const link = OSAA.safeURL(point.link);
 
         return '<li class="point">' +
             '<div class="point__main">' +
@@ -347,13 +357,7 @@
               (point.coSources.length
                   ? '<span class="provenance-co">with ' + e(point.coSources.join(', ')) + '</span>'
                   : '') +
-              (link
-                  ? '<a class="provenance-data-link" href="' + e(link) +
-                    '" target="_blank" rel="noopener">' +
-                    '' + OSAA.icon('database') + 'Dataset' +
-                    '<span class="visually-hidden"> for ' + e(point.name) +
-                    ' (opens in a new tab)</span></a>'
-                  : '') +
+              datasetLinks(point) +
               '<button type="button" class="copy-ref-btn" data-reference="' + e(reference) + '">' +
                 '' + OSAA.icon('quote-right') + 'Copy citation' +
               '</button>' +

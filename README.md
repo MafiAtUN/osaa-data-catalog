@@ -219,6 +219,30 @@ open http://localhost:8000
 
 ## 📝 Adding New Data
 
+### Multi-source data points
+
+Most data points cite one dataset in `link`. A few draw on several — one
+figure built from OECD, UNCTAD and World Bank series, say. Those carry a
+labelled `links` array, and `link` repeats the first entry so anything
+reading the original field still works:
+
+```json
+{
+  "name": "Official Development Assistance (ODA), FDI, Remittances",
+  "link": "https://data.oecd.org/oda/net-oda-received.htm",
+  "links": [
+    { "url": "https://data.oecd.org/oda/net-oda-received.htm", "label": "OECD" },
+    { "url": "https://unctadstat.unctad.org/", "label": "UNCTAD" },
+    { "url": "https://www.knomad.org/", "label": "World Bank (KNOMAD)" }
+  ]
+}
+```
+
+The UI renders one button per entry, labelled with the organisation, so a
+reader can go to the right source rather than guessing. Never comma-join URLs
+into `link` — everything after the first becomes a dead href, and `npm test`
+now fails on it.
+
 ### Adding a report
 
 1. Add the report object to the `reports` array in `reports.json`

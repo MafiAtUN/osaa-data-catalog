@@ -180,7 +180,6 @@
                       OSAA.icon('file-lines') + 'See this report in the catalog</a></p>' +
                     '<ul class="point-list">' +
                     group.points.map(entry => {
-                        const link = OSAA.safeURL(entry.point.link);
                         return '<li class="point"><div class="point__main">' +
                           '<span class="point__name">' + e(entry.point.name) + '</span>' +
                           (entry.point.value
@@ -191,11 +190,10 @@
                           '<div class="point__meta"><span class="meta-item">' +
                             OSAA.icon('quote-left') + e(entry.point.source || 'Unattributed') +
                           '</span>' +
-                          (link
-                              ? '<a class="provenance-data-link" href="' + e(link) +
-                                '" target="_blank" rel="noopener">' + OSAA.icon('database') +
-                                'Dataset</a>'
-                              : '') +
+                          OSAA.pointLinks(entry.point).map(l =>
+                              '<a class="provenance-data-link" href="' + e(l.url) +
+                              '" target="_blank" rel="noopener">' + OSAA.icon('database') +
+                              e(l.label || 'Dataset') + '</a>').join('') +
                           '</div></li>';
                     }).join('') +
                     '</ul>' +

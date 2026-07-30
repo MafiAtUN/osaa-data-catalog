@@ -79,7 +79,10 @@
         { label: 'Source (as cited)', value: r => r.point.source },
         { label: 'Point cluster', value: r => global.OSAA.clusterName(r.point.cluster) },
         { label: 'Usage note', value: r => r.point.notes },
-        { label: 'Dataset URL', value: r => r.point.link },
+        {
+            label: 'Dataset URL(s)',
+            value: r => global.OSAA.pointLinks(r.point).map(l => l.url).join(' | ')
+        },
         { label: 'Report URL', value: r => r.report.link }
     ];
 

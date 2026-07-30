@@ -306,6 +306,7 @@
                         value: point.value,
                         notes: point.notes,
                         link: point.link,
+                        links: point.links,
                         cluster: point.cluster,
                         attribution: point.source,
                         coSources: orgs.filter(o => o.name !== org.name).map(o => o.name)

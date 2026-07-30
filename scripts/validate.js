@@ -141,10 +141,36 @@ function checkReports(data, indicatorIds) {
             if (point.cluster && !CLUSTERS.includes(point.cluster)) {
                 fail(pat + ': unknown cluster "' + point.cluster + '"');
             }
+            /* A data point may cite several datasets. That is modelled with a
+               labelled `links` array, never by comma-joining URLs into `link`
+               — which silently produced a dead href for everything after the
+               first. `link` repeats links[0] so older consumers keep working;
+               the check below stops the two drifting apart. */
             if (point.link && !isHttpUrl(point.link)) {
-                warn(pat + (/,/.test(point.link)
-                    ? ': "link" holds several URLs — only the first is rendered'
+                fail(pat + (/,/.test(point.link)
+                    ? ': "link" holds several URLs — use a "links" array instead'
                     : ': "link" is not an http(s) URL'));
+            }
+
+            if (point.links !== undefined) {
+                if (!Array.isArray(point.links) || !point.links.length) {
+                    fail(pat + ': "links" must be a non-empty array');
+                } else {
+                    point.links.forEach((entry, k) => {
+                        if (!entry || !isHttpUrl(entry.url)) {
+                            fail(pat + ' links[' + k + ']: "url" is not an http(s) URL');
+                        }
+                        if (!entry || !entry.label) {
+                            warn(pat + ' links[' + k + ']: no "label", so the button reads "Dataset"');
+                        }
+                    });
+                    if (point.links.length === 1) {
+                        warn(pat + ': "links" holds one entry — plain "link" is enough');
+                    }
+                    if (point.link && point.links[0] && point.link !== point.links[0].url) {
+                        fail(pat + ': "link" must repeat links[0].url (they have drifted)');
+                    }
+                }
             }
 
             // Optional curated link into data.json — see catalog-graph.js.

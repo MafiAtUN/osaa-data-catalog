@@ -47,6 +47,20 @@
             });
     }
 
+    /**
+     * The datasets behind one data point. Most cite one; a few cite several,
+     * in which case reports.json carries a labelled `links` array and `link`
+     * repeats the first for readers that only know the original field.
+     */
+    function pointLinks(point) {
+        if (Array.isArray(point.links) && point.links.length) {
+            return point.links
+                .map(entry => ({ url: safeURL(entry.url), label: entry.label || '' }))
+                .filter(entry => entry.url);
+        }
+        return safeURLs(point.link).map(url => ({ url: url, label: '' }));
+    }
+
     function debounce(fn, wait) {
         let timer;
         return function () {
@@ -384,6 +398,7 @@
         escapeHTML: escapeHTML,
         safeURL: safeURL,
         safeURLs: safeURLs,
+        pointLinks: pointLinks,
         debounce: debounce,
         formatNumber: formatNumber,
         plural: plural,

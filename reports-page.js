@@ -483,9 +483,19 @@
         ).join('');
     }
 
+    /** One "Dataset" button per source, labelled when we know which is which. */
+    function datasetLinks(point) {
+        return OSAA.pointLinks(point).map(entry =>
+            '<a class="provenance-data-link" href="' + OSAA.escapeHTML(entry.url) +
+            '" target="_blank" rel="noopener">' + OSAA.icon('database') +
+            OSAA.escapeHTML(entry.label || 'Dataset') +
+            '<span class="visually-hidden"> — ' + OSAA.escapeHTML(point.name) +
+            ' (opens in a new tab)</span></a>'
+        ).join('');
+    }
+
     function pointItem(point) {
         const e = OSAA.escapeHTML;
-        const link = OSAA.safeURL(point.link);
 
         return '<li class="point">' +
             '<div class="point__main">' +
@@ -497,13 +507,7 @@
               '<span class="meta-item">' + OSAA.icon('quote-left') + '' +
                 '<span class="visually-hidden">Source: </span>' + e(point.source || 'Unattributed') +
               '</span>' +
-              (link
-                  ? '<a class="provenance-data-link" href="' + e(link) +
-                    '" target="_blank" rel="noopener">' +
-                    '' + OSAA.icon('database') + 'Dataset' +
-                    '<span class="visually-hidden"> for ' + e(point.name) +
-                    ' (opens in a new tab)</span></a>'
-                  : '') +
+              datasetLinks(point) +
             '</div>' +
             '</li>';
     }

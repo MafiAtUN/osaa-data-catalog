@@ -40,9 +40,23 @@
           "name": "Official Development Assistance (ODA), Foreign Direct Investment (FDI), Remittances",
           "value": "Flows to Africa 2010–2023",
           "source": "OECD, UNCTAD, World Bank (KNOMAD)",
-          "link": "https://data.oecd.org/oda/net-oda-received.htm, https://unctadstat.unctad.org/, https://www.knomad.org/",
+          "link": "https://data.oecd.org/oda/net-oda-received.htm",
           "notes": "Used in Figure II (flows to Africa 2010–2023).",
-          "cluster": "financing"
+          "cluster": "financing",
+          "links": [
+            {
+              "url": "https://data.oecd.org/oda/net-oda-received.htm",
+              "label": "OECD"
+            },
+            {
+              "url": "https://unctadstat.unctad.org/",
+              "label": "UNCTAD"
+            },
+            {
+              "url": "https://www.knomad.org/",
+              "label": "World Bank (KNOMAD)"
+            }
+          ]
         },
         {
           "name": "Remittance cost",
@@ -56,9 +70,23 @@
           "name": "Tax-to-GDP ratio / Domestic tax revenue share",
           "value": "Various by country",
           "source": "IMF, OECD, ATAF, WDI",
-          "link": "https://data.imf.org/, https://databank.worldbank.org/source/world-development-indicators, https://www.oecd.org/en/publications/revenue-statistics-in-africa-2024_78e9af3a-en.html",
+          "link": "https://data.imf.org/",
           "notes": "Used in Figures IV & V.",
-          "cluster": "financing"
+          "cluster": "financing",
+          "links": [
+            {
+              "url": "https://data.imf.org/",
+              "label": "IMF"
+            },
+            {
+              "url": "https://databank.worldbank.org/source/world-development-indicators",
+              "label": "World Bank"
+            },
+            {
+              "url": "https://www.oecd.org/en/publications/revenue-statistics-in-africa-2024_78e9af3a-en.html",
+              "label": "OECD"
+            }
+          ]
         },
         {
           "name": "Public sector efficiency (CPIA index)",
@@ -104,9 +132,19 @@
           "name": "Illicit Financial Flows",
           "value": "$88.6B annual",
           "source": "UNCTAD / UNECA / UNODC / PERI (UMass Amherst)",
-          "link": "https://unctad.org/publication/economic-development-africa-report-2020, https://peri.umass.edu/publication/new-estimates-of-capital-flight-from-african-countries-1970-2022",
+          "link": "https://unctad.org/publication/economic-development-africa-report-2020",
           "notes": "Used in Figure VIII to compare IFFs vs ODA.",
-          "cluster": "financing"
+          "cluster": "financing",
+          "links": [
+            {
+              "url": "https://unctad.org/publication/economic-development-africa-report-2020",
+              "label": "UNCTAD"
+            },
+            {
+              "url": "https://peri.umass.edu/publication/new-estimates-of-capital-flight-from-african-countries-1970-2022",
+              "label": "PERI (UMass Amherst)"
+            }
+          ]
         },
         {
           "name": "Governance indicators (Rule of Law, Transparency, etc.)",
@@ -232,9 +270,23 @@
           "name": "Interest Rates / Cost of Debt",
           "value": "Various rates by region",
           "source": "Afreximbank, U.S. Treasury, ECB",
-          "link": "https://media.afreximbank.com/afrexim/African-Debt-Outlook-A-Ray-of-Optimism.pdf, https://fiscaldata.treasury.gov/, https://www.ecb.europa.eu/",
+          "link": "https://media.afreximbank.com/afrexim/African-Debt-Outlook-A-Ray-of-Optimism.pdf",
           "notes": "Used in Figure XV for cost of capital analysis.",
-          "cluster": "financing"
+          "cluster": "financing",
+          "links": [
+            {
+              "url": "https://media.afreximbank.com/afrexim/African-Debt-Outlook-A-Ray-of-Optimism.pdf",
+              "label": "Afreximbank"
+            },
+            {
+              "url": "https://fiscaldata.treasury.gov/",
+              "label": "U.S. Treasury"
+            },
+            {
+              "url": "https://www.ecb.europa.eu/",
+              "label": "ECB"
+            }
+          ]
         },
         {
           "name": "Debt Sustainability / Export Ratios",

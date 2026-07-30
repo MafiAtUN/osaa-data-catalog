@@ -277,7 +277,7 @@ Comprehensive coverage from:
 
 ## 📞 Contact
 
-**Developed by**: Mafizul Islam, SMU Data Team  
+**Developed by**: [Mafizul Islam](https://www.linkedin.com/in/mafizul/), SMU Data Team  
 **Maintained by**: UN OSAA team and global development community
 
 For questions or contributions, please open an issue in this repository.

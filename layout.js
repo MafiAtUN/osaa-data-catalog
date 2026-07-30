@@ -158,10 +158,15 @@
             '<footer class="site-footer">' +
               '<div class="container site-footer__inner">' +
                 '<p>&copy; 2025 United Nations Office of the Special Adviser on Africa. ' +
-                  'Built by Mafizul Islam, SMU Data Team.</p>' +
+                  'Built by <a href="https://www.linkedin.com/in/mafizul/"' +
+                    ' target="_blank" rel="noopener">Mafizul Islam' +
+                    '<span class="visually-hidden"> (LinkedIn profile, opens in a new tab)</span>' +
+                  '</a>, SMU Data Team.</p>' +
                 '<p class="site-footer__links">' +
-                  '<a href="https://www.un.org/osaa/" target="_blank" rel="noopener">UN OSAA</a>' +
-                  '<a href="https://github.com/MafiAtUN/osaa-data-catalog" target="_blank" rel="noopener">Source &amp; issues</a>' +
+                  '<a href="https://www.un.org/osaa/" target="_blank" rel="noopener">UN OSAA' +
+                    '<span class="visually-hidden"> (opens in a new tab)</span></a>' +
+                  '<a href="https://github.com/MafiAtUN/osaa-data-catalog" target="_blank" rel="noopener">' +
+                    'Source &amp; issues<span class="visually-hidden"> (opens in a new tab)</span></a>' +
                 '</p>' +
               '</div>' +
             '</footer>';

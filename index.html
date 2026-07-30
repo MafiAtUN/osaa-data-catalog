@@ -2,449 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UN OSAA Data Catalog</title>
+    <meta name="description" content="A catalog of 145 development indicators and the data sources behind UN OSAA's published knowledge products on Africa's sustainable development agenda.">
+    <meta name="theme-color" content="#1e3c72">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="UN OSAA Data Catalog">
+    <meta property="og:description" content="Development indicators and traceable data sources for Africa's sustainable development agenda.">
+    <meta property="og:site_name" content="UN OSAA Data Catalog">
+
     <link rel="icon" type="image/svg+xml" href="OSAA identifier color.svg">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="icons.js"></script>
+    <script src="layout.js"></script>
 </head>
-<body>
+<body data-page="home">
     <div id="header-placeholder"></div>
 
-    <main class="main-content">
+    <main class="main-content" id="main">
         <div class="container">
-            <div class="welcome-section">
-                <div class="welcome-content">
-                    <h1>Welcome to the UN OSAA Data Catalog</h1>
-                    <p class="welcome-description">
-                        A comprehensive repository of development indicators and data sources for Africa's sustainable development agenda. 
-                        Explore indicators across six thematic clusters and access published reports with their associated data sources.
-                    </p>
-                    
-                    <div class="welcome-stats">
-                        <div class="stat-card">
-                            <i class="fas fa-chart-line"></i>
-                            <div class="stat-content">
-                                <h3 id="homeIndicatorCount">145</h3>
-                                <p>Indicators</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-file-alt"></i>
-                            <div class="stat-content">
-                                <h3 id="homeReportCount">8</h3>
-                                <p>Reports</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-layer-group"></i>
-                            <div class="stat-content">
-                                <h3 id="homeClusterCount">6</h3>
-                                <p>Thematic Clusters</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <i class="fas fa-globe-africa"></i>
-                            <div class="stat-content">
-                                <h3>54</h3>
-                                <p>African Countries</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="welcome-search">
-                        <div class="search-container">
-                            <input type="text" id="homeSearchInput" placeholder="Search indicators, reports, or data sources..." class="search-input">
-                            <button type="button" id="homeSearchBtn" class="search-btn">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        <div class="search-results" id="homeSearchResults" style="display: none;">
-                            <!-- Search results will be populated here -->
-                        </div>
-                    </div>
+            <section class="home-hero">
+                <h1>Every indicator, and where it came from</h1>
+                <p class="home-hero__lede">
+                    A catalog of development indicators for Africa's sustainable development
+                    agenda, and a provenance trail linking every data point back to the
+                    UN OSAA knowledge product that used it.
+                </p>
 
-                    <div class="welcome-actions">
-                        <a href="indicators.html" class="action-btn primary">
-                            <i class="fas fa-chart-line"></i>
-                            Explore Indicators
-                        </a>
-                        <a href="reports.html" class="action-btn secondary">
-                            <i class="fas fa-file-alt"></i>
-                            View Reports
-                        </a>
-                        <button class="action-btn tertiary" onclick="showAddForm()">
-                            <i class="fas fa-plus"></i>
-                            Add Indicator
-                        </button>
+                <div class="home-search search search--lg">
+                    <span class="icon search__icon" data-icon="magnifying-glass"></span>
+                    <label class="visually-hidden" for="homeSearch">
+                        Search indicators and knowledge products
+                    </label>
+                    <input class="input" type="search" id="homeSearch" autocomplete="off"
+                           role="combobox" aria-expanded="false" aria-controls="homeSearchResults"
+                           placeholder="Search indicators, reports or data sources…">
+                    <button type="button" class="search__clear" id="homeSearchClear" hidden
+                            aria-label="Clear search">
+                        <span class="icon" data-icon="xmark"></span>
+                    </button>
+                    <div class="search-results" id="homeSearchResults" role="listbox"
+                         aria-label="Search results" hidden></div>
+                    <p class="visually-hidden" id="homeSearchStatus" role="status"></p>
+                </div>
+
+                <div class="home-actions">
+                    <a class="btn btn--primary" href="indicators.html">
+                        <span class="icon" data-icon="chart-line"></span>
+                        Browse indicators
+                    </a>
+                    <a class="btn btn--secondary" href="sources.html">
+                        <span class="icon" data-icon="diagram-project"></span>
+                        Trace a data source
+                    </a>
+                    <button type="button" class="btn btn--secondary" data-open-contribute>
+                        <span class="icon" data-icon="plus"></span>
+                        Propose an indicator
+                    </button>
+                </div>
+            </section>
+
+            <h2 class="visually-hidden">Catalog at a glance</h2>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-card__icon" aria-hidden="true"><span class="icon" data-icon="chart-line"></span></span>
+                    <div>
+                        <div class="stat-card__value" id="statIndicators">—</div>
+                        <div class="stat-card__label">Indicators</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__icon" aria-hidden="true"><span class="icon" data-icon="file-lines"></span></span>
+                    <div>
+                        <div class="stat-card__value" id="statReports">—</div>
+                        <div class="stat-card__label">Knowledge products</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__icon" aria-hidden="true"><span class="icon" data-icon="database"></span></span>
+                    <div>
+                        <div class="stat-card__value" id="statSources">—</div>
+                        <div class="stat-card__label">Traced data sources</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__icon" aria-hidden="true"><span class="icon" data-icon="earth-africa"></span></span>
+                    <div>
+                        <div class="stat-card__value">54</div>
+                        <div class="stat-card__label">African countries</div>
                     </div>
                 </div>
             </div>
 
-            <div class="clusters-preview">
-                <h2>Thematic Clusters</h2>
-                <div class="clusters-grid">
-                    <div class="cluster-preview-card cluster-financing">
-                        <div class="cluster-icon">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <h3>Financing for Development</h3>
-                        <p>Mobilizing and managing resources for Africa's sustainable development</p>
-                        <a href="indicators.html?cluster=financing" class="cluster-link">View Indicators</a>
-                    </div>
-                    
-                    <div class="cluster-preview-card cluster-conflict">
-                        <div class="cluster-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Addressing Drivers of Conflict</h3>
-                        <p>Linking peace, governance, and development</p>
-                        <a href="indicators.html?cluster=conflict" class="cluster-link">View Indicators</a>
-                    </div>
-                    
-                    <div class="cluster-preview-card cluster-democracy">
-                        <div class="cluster-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>Democracy, Resilience, and Human Capital</h3>
-                        <p>Strengthening governance, inclusion, and social protection</p>
-                        <a href="indicators.html?cluster=democracy" class="cluster-link">View Indicators</a>
-                    </div>
-                    
-                    <div class="cluster-preview-card cluster-sti">
-                        <div class="cluster-icon">
-                            <i class="fas fa-microchip"></i>
-                        </div>
-                        <h3>Science, Technology, and Innovation</h3>
-                        <p>Leveraging technology for Africa's transformation</p>
-                        <a href="indicators.html?cluster=sti" class="cluster-link">View Indicators</a>
-                    </div>
-                    
-                    <div class="cluster-preview-card cluster-industrialization">
-                        <div class="cluster-icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
-                        <h3>Industrialization and AfCFTA</h3>
-                        <p>Accelerating structural transformation and trade integration</p>
-                        <a href="indicators.html?cluster=industrialization" class="cluster-link">View Indicators</a>
-                    </div>
-                    
-                    <div class="cluster-preview-card cluster-energy">
-                        <div class="cluster-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h3>Sustainable Energy and Climate Change</h3>
-                        <p>Advancing green growth and climate resilience</p>
-                        <a href="indicators.html?cluster=energy" class="cluster-link">View Indicators</a>
-                    </div>
+            <section>
+                <div class="section-head">
+                    <h2>Thematic clusters</h2>
+                    <p>The six priority areas the catalog is organised around.</p>
                 </div>
-            </div>
+                <div class="cluster-grid" id="clusterGrid"></div>
+            </section>
+
         </div>
     </main>
 
     <div id="footer-placeholder"></div>
 
-    <!-- Add Indicator Modal -->
-    <div id="addModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Add New Indicator</h2>
-                <span class="close" onclick="hideAddForm()">&times;</span>
-            </div>
-            <form id="addIndicatorForm" class="add-form">
-                <div class="form-group">
-                    <label for="indicatorName">Indicator Name *</label>
-                    <input type="text" id="indicatorName" name="indicatorName" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="indicatorCluster">Cluster *</label>
-                    <select id="indicatorCluster" name="indicatorCluster" required>
-                        <option value="">Select Cluster</option>
-                        <option value="financing">Financing for Development</option>
-                        <option value="conflict">Addressing Drivers of Conflict</option>
-                        <option value="democracy">Democracy, Resilience, and Human Capital</option>
-                        <option value="sti">Science, Technology, and Innovation</option>
-                        <option value="industrialization">Industrialization and AfCFTA</option>
-                        <option value="energy">Sustainable Energy and Climate Change</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="indicatorTheme">Theme</label>
-                    <input type="text" id="indicatorTheme" name="indicatorTheme" placeholder="e.g., Tax Revenue, Governance">
-                </div>
-                
-                <div class="form-group">
-                    <label for="indicatorDescription">Description *</label>
-                    <textarea id="indicatorDescription" name="indicatorDescription" rows="3" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="indicatorSource">Source *</label>
-                    <input type="text" id="indicatorSource" name="indicatorSource" required placeholder="e.g., World Bank, IMF">
-                </div>
-                
-                <div class="form-group">
-                    <label for="indicatorUrl">Source URL</label>
-                    <input type="url" id="indicatorUrl" name="indicatorUrl" placeholder="https://...">
-                </div>
-                
-                <div class="form-group">
-                    <label for="indicatorMetadata">Metadata</label>
-                    <textarea id="indicatorMetadata" name="indicatorMetadata" rows="2" placeholder="Data collection method, frequency, etc."></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="indicatorRemarks">Remarks</label>
-                    <textarea id="indicatorRemarks" name="indicatorRemarks" rows="2" placeholder="Additional notes or context"></textarea>
-                </div>
-                
-                <div class="form-actions">
-                    <button type="button" class="btn-secondary" onclick="hideAddForm()">Cancel</button>
-                    <button type="submit" class="btn-primary">Add Indicator</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // Load shared components
-        function loadSharedComponents() {
-            fetch('shared/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                });
-            
-            fetch('shared/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                });
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            loadSharedComponents();
-            setupHomePageFunctionality();
-        });
-
-        // Setup home page specific functionality
-        function setupHomePageFunctionality() {
-            // Load data
-            loadHomeData();
-
-            // Setup search functionality
-            const homeSearchInput = document.getElementById('homeSearchInput');
-            const homeSearchBtn = document.getElementById('homeSearchBtn');
-            
-            if (homeSearchInput) {
-                homeSearchInput.addEventListener('input', handleHomeSearch);
-            }
-            if (homeSearchBtn) {
-                homeSearchBtn.addEventListener('click', handleHomeSearch);
-            }
-            
-            // Setup add indicator form
-            const addForm = document.getElementById('addIndicatorForm');
-            if (addForm) {
-                addForm.addEventListener('submit', handleAddIndicator);
-            }
-        }
-
-        // Load indicators and reports using data loader
-        async function loadHomeData() {
-            try {
-                await window.dataLoader.loadAll();
-                window.indicators = window.dataLoader.getIndicators();
-                window.reports = window.dataLoader.getReports();
-                updateHomeStats();
-            } catch (error) {
-                console.error('Error loading data:', error);
-                window.indicators = [];
-                window.reports = [];
-            }
-        }
-
-        // Keep the welcome stats in sync with the catalog data
-        function updateHomeStats() {
-            const stats = {
-                homeIndicatorCount: window.dataLoader.getIndicatorsCount(),
-                homeReportCount: window.dataLoader.getReportsCount(),
-                homeClusterCount: window.dataLoader.getClusters().length
-            };
-
-            Object.entries(stats).forEach(([id, count]) => {
-                const el = document.getElementById(id);
-                if (el && count > 0) {
-                    el.textContent = count;
-                }
-            });
-        }
-
-        // Handle home page search
-        function handleHomeSearch() {
-            const searchTerm = document.getElementById('homeSearchInput').value.toLowerCase();
-            const resultsContainer = document.getElementById('homeSearchResults');
-            
-            if (searchTerm.length < 2) {
-                resultsContainer.style.display = 'none';
-                return;
-            }
-            
-            const results = searchAllData(searchTerm);
-            displaySearchResults(results, resultsContainer);
-        }
-
-        // Search across indicators and reports
-        function searchAllData(searchTerm) {
-            const results = {
-                indicators: [],
-                reports: []
-            };
-            
-            // Search indicators using data loader
-            if (window.dataLoader && window.dataLoader.loaded) {
-                results.indicators = window.dataLoader.searchIndicators(searchTerm).slice(0, 5);
-            } else if (window.indicators) {
-                results.indicators = window.indicators.filter(indicator => 
-                    indicator.name.toLowerCase().includes(searchTerm) ||
-                    (indicator.theme && indicator.theme.toLowerCase().includes(searchTerm)) ||
-                    indicator.description.toLowerCase().includes(searchTerm) ||
-                    indicator.cluster.toLowerCase().includes(searchTerm) ||
-                    (indicator.source && indicator.source.toLowerCase().includes(searchTerm))
-                ).slice(0, 5);
-            }
-            
-            // Search reports using data loader
-            if (window.dataLoader && window.dataLoader.loaded) {
-                results.reports = window.dataLoader.searchReports(searchTerm).slice(0, 3);
-            } else if (window.reports) {
-                results.reports = window.reports.filter(report => 
-                    report.title.toLowerCase().includes(searchTerm) ||
-                    report.summary.toLowerCase().includes(searchTerm) ||
-                    report.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-                ).slice(0, 3);
-            }
-            
-            return results;
-        }
-
-        // Display search results
-        function displaySearchResults(results, container) {
-            const totalResults = results.indicators.length + results.reports.length;
-            
-            if (totalResults === 0) {
-                container.innerHTML = '<div class="search-no-results">No results found</div>';
-                container.style.display = 'block';
-                return;
-            }
-            
-            let html = '<div class="search-results-header">';
-            html += `<h4>Search Results (${totalResults})</h4>`;
-            html += '</div>';
-            
-            // Display indicators
-            if (results.indicators.length > 0) {
-                html += '<div class="search-section">';
-                html += '<h5><i class="fas fa-chart-line"></i> Indicators</h5>';
-                results.indicators.forEach(indicator => {
-                    html += `<div class="search-item" onclick="goToIndicators('${indicator.cluster}')">`;
-                    html += `<div class="search-item-title">${indicator.name}</div>`;
-                    html += `<div class="search-item-meta">${getClusterDisplayName(indicator.cluster)} • ${indicator.source}</div>`;
-                    html += '</div>';
-                });
-                html += '</div>';
-            }
-            
-            // Display reports
-            if (results.reports.length > 0) {
-                html += '<div class="search-section">';
-                html += '<h5><i class="fas fa-file-alt"></i> Reports</h5>';
-                results.reports.forEach(report => {
-                    html += `<div class="search-item" onclick="goToReports()">`;
-                    html += `<div class="search-item-title">${report.title}</div>`;
-                    html += `<div class="search-item-meta">${report.year} • ${report.indicators.length} indicators</div>`;
-                    html += '</div>';
-                });
-                html += '</div>';
-            }
-            
-            container.innerHTML = html;
-            container.style.display = 'block';
-        }
-
-        // Helper function to get cluster display name
-        function getClusterDisplayName(cluster) {
-            const clusterNames = {
-                'financing': 'Financing for Development',
-                'conflict': 'Addressing Drivers of Conflict',
-                'democracy': 'Democracy, Resilience, and Human Capital',
-                'sti': 'Science, Technology, and Innovation',
-                'industrialization': 'Industrialization and AfCFTA',
-                'energy': 'Sustainable Energy and Climate Change'
-            };
-            return clusterNames[cluster] || cluster;
-        }
-
-        // Navigation functions
-        function goToIndicators(cluster = '') {
-            if (cluster) {
-                window.location.href = `indicators.html?cluster=${cluster}`;
-            } else {
-                window.location.href = 'indicators.html';
-            }
-        }
-
-        function goToReports() {
-            window.location.href = 'reports.html';
-        }
-
-        // Add indicator functions
-        function showAddForm() {
-            document.getElementById('addModal').style.display = 'block';
-        }
-
-        function hideAddForm() {
-            document.getElementById('addModal').style.display = 'none';
-            document.getElementById('addIndicatorForm').reset();
-        }
-
-        function handleAddIndicator(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const newIndicator = {
-                id: Date.now().toString(),
-                name: formData.get('indicatorName'),
-                cluster: formData.get('indicatorCluster'),
-                theme: formData.get('indicatorTheme') || '',
-                description: formData.get('indicatorDescription'),
-                source: formData.get('indicatorSource'),
-                url: formData.get('indicatorUrl') || '',
-                metadata: formData.get('indicatorMetadata') || '',
-                remarks: formData.get('indicatorRemarks') || ''
-            };
-            
-            // Add to indicators array
-            if (window.indicators) {
-                window.indicators.push(newIndicator);
-            }
-            
-            // Hide modal and show success
-            hideAddForm();
-            alert('Indicator added successfully! It will be available after the page is refreshed.');
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('addModal');
-            if (event.target === modal) {
-                hideAddForm();
-            }
-        }
-    </script>
+    <script src="search.js"></script>
     <script src="data-loader.js"></script>
+    <script src="sources-index.js"></script>
+    <script src="contribute.js"></script>
+    <script src="home-page.js"></script>
 </body>
 </html>

@@ -2,113 +2,130 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Sources - UN OSAA Data Catalog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data sources — UN OSAA Data Catalog</title>
+    <meta name="description" content="A reverse index tracing every data source back to the UN OSAA knowledge products that cited it, with the exact data points drawn and a copy-ready citation.">
+    <meta name="theme-color" content="#1e3c72">
+
     <link rel="icon" type="image/svg+xml" href="OSAA identifier color.svg">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="icons.js"></script>
+    <script src="layout.js"></script>
 </head>
-<body>
+<body data-page="sources">
     <div id="header-placeholder"></div>
 
-    <main class="main-content">
+    <main class="main-content" id="main">
         <div class="container">
-            <div class="sources-page">
-                <div class="reports-header">
-                    <h2>Data Sources &amp; Provenance</h2>
-                    <p>
-                        Trace every data source back to the UN OSAA knowledge products that used it.
-                        Each entry lists the reports the source appears in, the exact data points drawn
-                        from it, and a citation you can copy.
-                    </p>
-                </div>
 
-                <div class="sources-stats">
-                    <div class="stat-card">
-                        <i class="fas fa-database"></i>
-                        <div class="stat-content">
-                            <h3 id="sourceCount">0</h3>
-                            <p>Data Sources</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-link"></i>
-                        <div class="stat-content">
-                            <h3 id="linkCount">0</h3>
-                            <p>Source &rarr; Report Links</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-chart-line"></i>
-                        <div class="stat-content">
-                            <h3 id="pointCount">0</h3>
-                            <p>Data Points Traced</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-recycle"></i>
-                        <div class="stat-content">
-                            <h3 id="reusedCount">0</h3>
-                            <p>Used in 2+ Reports</p>
-                        </div>
+            <div class="page-hero">
+                <p class="page-hero__eyebrow">
+                    <span class="icon" data-icon="diagram-project"></span> Provenance
+                </p>
+                <h1>Data sources and provenance</h1>
+                <p>
+                    Trace every data source back to the knowledge products that used it.
+                    Each entry lists the reports it appears in, the exact data points drawn
+                    from it, and a citation you can copy. The index is derived from the report
+                    data at page load, so it cannot drift.
+                </p>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-card__icon" aria-hidden="true"><span class="icon" data-icon="database"></span></span>
+                    <div>
+                        <div class="stat-card__value" id="sourceCount">—</div>
+                        <div class="stat-card__label">Data sources</div>
                     </div>
                 </div>
-
-                <div class="sources-controls">
-                    <div class="search-container">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="sourceSearch"
-                               placeholder="Search a source, report, or indicator...">
+                <div class="stat-card">
+                    <span class="stat-card__icon" aria-hidden="true"><span class="icon" data-icon="link"></span></span>
+                    <div>
+                        <div class="stat-card__value" id="linkCount">—</div>
+                        <div class="stat-card__label">Source → report links</div>
                     </div>
-                    <select id="sourceReportFilter">
-                        <option value="">All knowledge products</option>
-                    </select>
-                    <select id="sourceSort">
-                        <option value="reports">Sort: most knowledge products</option>
-                        <option value="points">Sort: most data points</option>
-                        <option value="name">Sort: name (A&ndash;Z)</option>
-                    </select>
                 </div>
-
-                <div id="sourcesResultCount" class="sources-result-count"></div>
-                <div id="sourcesList" class="sources-index-list">
-                    <div class="loading-state">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        <p>Building source index&hellip;</p>
+                <div class="stat-card">
+                    <span class="stat-card__icon" aria-hidden="true"><span class="icon" data-icon="chart-line"></span></span>
+                    <div>
+                        <div class="stat-card__value" id="pointCount">—</div>
+                        <div class="stat-card__label">Data points traced</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card__icon" aria-hidden="true"><span class="icon" data-icon="recycle"></span></span>
+                    <div>
+                        <div class="stat-card__value" id="reusedCount">—</div>
+                        <div class="stat-card__label">Used in 2+ reports</div>
                     </div>
                 </div>
             </div>
+
+            <section class="toolbar" aria-label="Filter data sources">
+                <div class="toolbar__grid">
+                    <div class="field field--wide">
+                        <label for="sourceSearch">Search</label>
+                        <div class="search">
+                            <span class="icon search__icon" data-icon="magnifying-glass"></span>
+                            <input class="input" type="search" id="sourceSearch" autocomplete="off"
+                                   placeholder="Source, report or data point…">
+                            <button type="button" class="search__clear" id="sourceSearchClear"
+                                    hidden aria-label="Clear search">
+                                <span class="icon" data-icon="xmark"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="sourceReportFilter">Knowledge product</label>
+                        <select class="select" id="sourceReportFilter">
+                            <option value="">All knowledge products</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="sourceSort">Sort by</label>
+                        <select class="select" id="sourceSort">
+                            <option value="reports">Most knowledge products</option>
+                            <option value="points">Most data points</option>
+                            <option value="name">Name (A–Z)</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <div class="result-bar">
+                <p class="result-count" id="sourcesResultCount" role="status"></p>
+                <div class="chip-row" id="activeFilters"></div>
+                <div class="menu-wrap">
+                    <button type="button" class="btn btn--secondary btn--sm" id="exportBtn"
+                            aria-haspopup="true" aria-expanded="false">
+                        <span class="icon" data-icon="download"></span>
+                        Export
+                    </button>
+                    <ul class="menu" hidden>
+                        <li><button type="button" data-format="csv">
+                            <span class="icon" data-icon="report"></span>
+                            <span>CSV<small>Spreadsheet of the data sources shown</small></span>
+                        </button></li>
+                        <li><button type="button" data-format="json">
+                            <span class="icon" data-icon="database"></span>
+                            <span>JSON<small>Full records, as loaded</small></span>
+                        </button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sources-list" id="sourcesList"></div>
+
         </div>
     </main>
 
     <div id="footer-placeholder"></div>
 
+    <script src="search.js"></script>
+    <script src="export.js"></script>
     <script src="data-loader.js"></script>
     <script src="sources-index.js"></script>
     <script src="sources-page.js"></script>
-    <script>
-        function loadSharedComponents() {
-            fetch('shared/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                    const sourcesLink = document.getElementById('sourcesLink');
-                    const indicatorsLink = document.getElementById('indicatorsLink');
-                    if (sourcesLink) sourcesLink.classList.add('active');
-                    if (indicatorsLink) indicatorsLink.classList.remove('active');
-                });
-
-            fetch('shared/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                });
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            loadSharedComponents();
-            initSourcesPage();
-        });
-    </script>
 </body>
 </html>

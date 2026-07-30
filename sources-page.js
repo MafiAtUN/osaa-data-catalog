@@ -1,275 +1,395 @@
-// UN OSAA Data Catalog - Data Sources page
-// Renders the source -> knowledge product reverse index built by sources-index.js.
+/* Data sources page — renders the source → knowledge product reverse index
+ * built by sources-index.js.
+ *
+ * Each source card can carry dozens of data points, so the per-report groups
+ * are collapsed by default and open automatically when a filter has narrowed
+ * the page to a single knowledge product.
+ */
+(function () {
+    'use strict';
 
-let sourceIndex = [];
-let allReports = [];
+    const state = { q: '', report: '', sort: 'reports' };
 
-const CLUSTER_NAMES = {
-    financing: 'Financing for Development',
-    conflict: 'Addressing Drivers of Conflict',
-    democracy: 'Democracy, Resilience, and Human Capital',
-    sti: 'Science, Technology, and Innovation',
-    industrialization: 'Industrialization and AfCFTA',
-    energy: 'Sustainable Energy and Climate Change'
-};
+    let index = [];
+    let reports = [];
+    const el = {};
 
-function escapeHTML(value) {
-    return String(value == null ? '' : value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
+    function cache() {
+        el.search = document.getElementById('sourceSearch');
+        el.clear = document.getElementById('sourceSearchClear');
+        el.report = document.getElementById('sourceReportFilter');
+        el.sort = document.getElementById('sourceSort');
+        el.list = document.getElementById('sourcesList');
+        el.count = document.getElementById('sourcesResultCount');
+        el.chips = document.getElementById('activeFilters');
+        el.export = document.getElementById('exportBtn');
+    }
 
-async function initSourcesPage() {
-    try {
-        await window.dataLoader.loadAll();
-        allReports = window.dataLoader.getReports();
-        sourceIndex = window.SourceIndex.buildSourceIndex(allReports);
+    async function init() {
+        cache();
+        OSAA.skeleton(el.list, 4);
+        readURL();
+
+        try {
+            await window.dataLoader.loadReports(); // this page never needs data.json
+        } catch (error) {
+            console.error(error);
+            OSAA.errorBanner(el.list, 'The report data could not be loaded, so the source index could not be built.');
+            return;
+        }
+
+        reports = window.dataLoader.getReports();
+        index = window.SourceIndex.buildSourceIndex(reports);
 
         renderStats();
-        populateReportFilter();
-        renderSources();
-
-        document.getElementById('sourceSearch').addEventListener('input', renderSources);
-        document.getElementById('sourceReportFilter').addEventListener('change', renderSources);
-        document.getElementById('sourceSort').addEventListener('change', renderSources);
-    } catch (error) {
-        console.error('Error building source index:', error);
-        document.getElementById('sourcesList').innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-triangle-exclamation"></i>
-                <h3>Could not load the source index</h3>
-                <p>The report data failed to load. Please refresh and try again.</p>
-            </div>`;
-    }
-}
-
-function renderStats() {
-    const links = sourceIndex.reduce((total, s) => total + s.reports.length, 0);
-    const points = allReports.reduce((total, r) => total + (r.indicators || []).length, 0);
-    const reused = sourceIndex.filter(s => s.reports.length > 1).length;
-
-    document.getElementById('sourceCount').textContent = sourceIndex.length;
-    document.getElementById('linkCount').textContent = links;
-    document.getElementById('pointCount').textContent = points;
-    document.getElementById('reusedCount').textContent = reused;
-}
-
-function populateReportFilter() {
-    const select = document.getElementById('sourceReportFilter');
-    allReports
-        .slice()
-        .sort((a, b) => String(b.year).localeCompare(String(a.year)))
-        .forEach(report => {
-            const option = document.createElement('option');
-            option.value = report.id;
-            option.textContent = report.title.length > 70
-                ? report.title.slice(0, 67) + '...'
-                : report.title;
-            select.appendChild(option);
+        fillReportFilter();
+        syncControls();
+        bind();
+        window.CatalogExport.attach(el.export, () => {
+            const rows = filtered();
+            return {
+                basename: 'osaa-data-sources',
+                count: rows.length,
+                noun: OSAA.plural(rows.length, 'data source'),
+                csv: { columns: window.CatalogExport.SOURCE_COLUMNS, rows: rows },
+                json: {
+                    exported: new Date().toISOString(),
+                    filters: { search: state.q, report: state.report },
+                    count: rows.length,
+                    sources: rows
+                }
+            };
         });
-}
+        render();
+    }
 
-function getFilteredSources() {
-    const term = (document.getElementById('sourceSearch').value || '').toLowerCase().trim();
-    const reportId = document.getElementById('sourceReportFilter').value;
-    const sort = document.getElementById('sourceSort').value;
+    function readURL() {
+        const p = OSAA.readParams();
+        state.q = p.get('q') || '';
+        state.report = p.get('report') || '';
+        state.sort = p.get('sort') || 'reports';
+    }
 
-    let list = sourceIndex.filter(source => {
-        if (reportId && !source.reports.some(r => r.id === reportId)) return false;
-        if (!term) return true;
+    function syncControls() {
+        el.search.value = state.q;
+        el.report.value = state.report;
+        el.sort.value = state.sort;
+        el.clear.hidden = !state.q;
+    }
 
-        if (source.name.toLowerCase().includes(term)) return true;
-        if (source.attributions.some(a => a.toLowerCase().includes(term))) return true;
-        return source.reports.some(report =>
-            report.title.toLowerCase().includes(term) ||
-            String(report.year).includes(term) ||
-            report.dataPoints.some(p =>
-                (p.name || '').toLowerCase().includes(term) ||
-                (p.notes || '').toLowerCase().includes(term) ||
-                (p.value || '').toLowerCase().includes(term))
+    function renderStats() {
+        const links = index.reduce((total, s) => total + s.reports.length, 0);
+        const points = reports.reduce((total, r) => total + (r.indicators || []).length, 0);
+        const reused = index.filter(s => s.reports.length > 1).length;
+
+        document.getElementById('sourceCount').textContent = OSAA.formatNumber(index.length);
+        document.getElementById('linkCount').textContent = OSAA.formatNumber(links);
+        document.getElementById('pointCount').textContent = OSAA.formatNumber(points);
+        document.getElementById('reusedCount').textContent = OSAA.formatNumber(reused);
+    }
+
+    function fillReportFilter() {
+        OSAA.fillSelect(
+            el.report,
+            reports
+                .slice()
+                .sort((a, b) => String(b.year).localeCompare(String(a.year)))
+                .map(r => ({
+                    value: r.id,
+                    label: r.title.length > 64 ? r.title.slice(0, 61) + '…' : r.title
+                })),
+            'All knowledge products'
         );
-    });
-
-    // When filtering to one report, only show that report's rows.
-    if (reportId) {
-        list = list.map(source => ({
-            ...source,
-            reports: source.reports.filter(r => r.id === reportId)
-        }));
+        el.report.value = state.report;
     }
 
-    if (sort === 'name') {
-        list.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (sort === 'points') {
-        list.sort((a, b) => b.dataPointCount - a.dataPointCount || a.name.localeCompare(b.name));
-    } else {
-        list.sort((a, b) =>
-            b.reports.length - a.reports.length ||
-            b.dataPointCount - a.dataPointCount ||
-            a.name.localeCompare(b.name));
+    function bind() {
+        el.search.addEventListener('input', OSAA.debounce(() => {
+            state.q = el.search.value;
+            el.clear.hidden = !state.q;
+            render();
+        }, 200));
+
+        el.clear.addEventListener('click', () => {
+            el.search.value = '';
+            state.q = '';
+            el.clear.hidden = true;
+            el.search.focus();
+            render();
+        });
+
+        el.report.addEventListener('change', () => { state.report = el.report.value; render(); });
+        el.sort.addEventListener('change', () => { state.sort = el.sort.value; render(); });
+
+        el.chips.addEventListener('click', event => {
+            const target = event.target.closest('[data-clear]');
+            if (!target) return;
+            const key = target.dataset.clear;
+            if (key === 'all') { state.q = ''; state.report = ''; }
+            else state[key] = '';
+            syncControls();
+            render();
+        });
+
+        el.list.addEventListener('click', event => {
+            const btn = event.target.closest('.copy-ref-btn');
+            if (btn) { copyReference(btn); return; }
+            if (event.target.closest('.empty-state [data-clear="all"]')) {
+                state.q = ''; state.report = '';
+                syncControls();
+                render();
+            }
+        });
     }
-    return list;
-}
 
-function renderSources() {
-    const container = document.getElementById('sourcesList');
-    const list = getFilteredSources();
-    const counter = document.getElementById('sourcesResultCount');
+    function filtered() {
+        const term = state.q.toLowerCase().trim();
 
-    counter.textContent = list.length === sourceIndex.length
-        ? `Showing all ${list.length} data sources`
-        : `Showing ${list.length} of ${sourceIndex.length} data sources`;
+        let list = index.filter(source => {
+            if (state.report && !source.reports.some(r => r.id === state.report)) return false;
+            if (!term) return true;
+            if (source.name.toLowerCase().includes(term)) return true;
+            if (source.attributions.some(a => a.toLowerCase().includes(term))) return true;
+            return source.reports.some(report =>
+                report.title.toLowerCase().includes(term) ||
+                String(report.year).includes(term) ||
+                report.dataPoints.some(p =>
+                    (p.name || '').toLowerCase().includes(term) ||
+                    (p.notes || '').toLowerCase().includes(term) ||
+                    (p.value || '').toLowerCase().includes(term))
+            );
+        });
 
-    if (!list.length) {
-        container.innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-magnifying-glass"></i>
-                <h3>No sources found</h3>
-                <p>Try a different search term or clear the filters.</p>
-            </div>`;
-        return;
+        // Filtering to one report should also hide the other reports' rows.
+        if (state.report) {
+            list = list.map(source => Object.assign({}, source, {
+                reports: source.reports.filter(r => r.id === state.report)
+            }));
+        }
+
+        const byName = (a, b) => a.name.localeCompare(b.name);
+        if (state.sort === 'name') list.sort(byName);
+        else if (state.sort === 'points') {
+            list.sort((a, b) => b.dataPointCount - a.dataPointCount || byName(a, b));
+        } else {
+            list.sort((a, b) =>
+                b.reports.length - a.reports.length ||
+                b.dataPointCount - a.dataPointCount || byName(a, b));
+        }
+
+        return list;
     }
 
-    container.innerHTML = list.map(createSourceCard).join('');
-}
+    function render() {
+        const list = filtered();
 
-function createSourceCard(source) {
-    const reportCount = source.reports.length;
-    const productWord = reportCount === 1 ? 'knowledge product' : 'knowledge products';
-    const pointWord = source.dataPointCount === 1 ? 'data point' : 'data points';
+        OSAA.writeParams({
+            q: state.q,
+            report: state.report,
+            sort: state.sort === 'reports' ? '' : state.sort // default
+        });
+        renderChips();
 
-    const reportsHTML = source.reports.map(report => `
-        <div class="provenance-report">
-            <div class="provenance-report-head">
-                <div class="provenance-report-meta">
-                    <span class="provenance-year">${escapeHTML(report.year)}</span>
-                    <h4>${escapeHTML(report.title)}</h4>
-                </div>
-                ${report.link ? `
-                    <a href="${escapeHTML(report.link)}" target="_blank" rel="noopener"
-                       class="knowledge-product-link">
-                        <i class="fas fa-up-right-from-square"></i>
-                        Open knowledge product
-                    </a>` : `
-                    <span class="knowledge-product-link is-missing">
-                        <i class="fas fa-link-slash"></i> No report link on file
-                    </span>`}
-            </div>
-            <ul class="provenance-points">
-                ${report.dataPoints.map(point => createPointHTML(point, report)).join('')}
-            </ul>
-        </div>
-    `).join('');
+        el.count.innerHTML = list.length === index.length
+            ? 'Showing all <strong>' + OSAA.formatNumber(list.length) + '</strong> data sources'
+            : 'Showing <strong>' + OSAA.formatNumber(list.length) + '</strong> of ' +
+              OSAA.formatNumber(index.length) + ' data sources';
 
-    return `
-        <article class="source-index-card${source.unattributed ? ' is-unattributed' : ''}">
-            <header class="source-index-head">
-                <div class="source-index-title">
-                    <div class="source-avatar">${escapeHTML(source.name.charAt(0))}</div>
-                    <div>
-                        <h3>${escapeHTML(source.name)}</h3>
-                        <div class="source-badges">
-                            <span class="badge badge-primary">
-                                <i class="fas fa-file-alt"></i>
-                                ${reportCount} ${productWord}
-                            </span>
-                            <span class="badge">
-                                <i class="fas fa-chart-line"></i>
-                                ${source.dataPointCount} ${pointWord}
-                            </span>
-                            ${source.sharedCount ? `
-                                <span class="badge badge-muted" title="Data points where this source is cited alongside others">
-                                    <i class="fas fa-users"></i>
-                                    ${source.sharedCount} co-attributed
-                                </span>` : ''}
-                        </div>
-                    </div>
-                </div>
-                ${source.link ? `
-                    <a href="${escapeHTML(source.link)}" target="_blank" rel="noopener"
-                       class="source-home-link">
-                        <i class="fas fa-globe"></i> Source website
-                    </a>` : ''}
-            </header>
+        if (!list.length) {
+            el.list.innerHTML =
+                '<div class="empty-state">' +
+                OSAA.icon('magnifying-glass') +
+                '<h3>No sources found</h3>' +
+                '<p>Try a different search term, or clear the filters.</p>' +
+                '<button type="button" class="btn btn--secondary" data-clear="all">' +
+                'Clear all filters</button></div>';
+            return;
+        }
 
-            ${source.unattributed ? `
-                <p class="source-warning">
-                    <i class="fas fa-circle-info"></i>
-                    These data points cite no named institution in the source record.
-                    They need a proper attribution before they can be traced.
-                </p>` : ''}
-
-            ${source.attributions.length > 1 ? `
-                <p class="source-attributions">
-                    <strong>Cited in the reports as:</strong>
-                    ${source.attributions.map(a => `<code>${escapeHTML(a)}</code>`).join(' ')}
-                </p>` : ''}
-
-            <div class="provenance-reports">${reportsHTML}</div>
-        </article>
-    `;
-}
-
-function createPointHTML(point, report) {
-    const reference = window.SourceIndex.formatReference(point.attribution, point, report);
-    const clusterName = CLUSTER_NAMES[point.cluster] || point.cluster || '';
-
-    return `
-        <li class="provenance-point">
-            <div class="provenance-point-main">
-                <span class="provenance-point-name">${escapeHTML(point.name)}</span>
-                ${point.value ? `<span class="provenance-value">${escapeHTML(point.value)}</span>` : ''}
-            </div>
-            ${point.notes ? `<div class="provenance-notes">${escapeHTML(point.notes)}</div>` : ''}
-            <div class="provenance-point-foot">
-                ${clusterName ? `<span class="provenance-cluster cluster-${escapeHTML(point.cluster)}">${escapeHTML(clusterName)}</span>` : ''}
-                ${point.coSources.length ? `
-                    <span class="provenance-co">with ${escapeHTML(point.coSources.join(', '))}</span>` : ''}
-                ${point.link ? `
-                    <a href="${escapeHTML(point.link)}" target="_blank" rel="noopener"
-                       class="provenance-data-link">
-                        <i class="fas fa-database"></i> Dataset
-                    </a>` : ''}
-                <button type="button" class="copy-ref-btn"
-                        data-reference="${escapeHTML(reference)}"
-                        onclick="copyReference(this)">
-                    <i class="fas fa-quote-right"></i> Copy citation
-                </button>
-            </div>
-        </li>
-    `;
-}
-
-function copyReference(button) {
-    const text = button.getAttribute('data-reference');
-    const done = () => {
-        const original = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-check"></i> Copied';
-        button.classList.add('is-copied');
-        setTimeout(() => {
-            button.innerHTML = original;
-            button.classList.remove('is-copied');
-        }, 1600);
-    };
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
-    } else {
-        fallbackCopy(text, done);
+        // With one report in view, or a single source, show the detail up front.
+        const expand = !!state.report || list.length === 1;
+        el.list.innerHTML = list.map(source => sourceCard(source, expand)).join('');
     }
-}
 
-function fallbackCopy(text, done) {
-    const area = document.createElement('textarea');
-    area.value = text;
-    area.setAttribute('readonly', '');
-    area.style.position = 'absolute';
-    area.style.left = '-9999px';
-    document.body.appendChild(area);
-    area.select();
-    try { document.execCommand('copy'); done(); } catch (e) { console.error('Copy failed', e); }
-    document.body.removeChild(area);
-}
+    function renderChips() {
+        const chips = [];
+        if (state.q) chips.push(chip('q', 'Search: “' + state.q + '”'));
+        if (state.report) {
+            const report = reports.find(r => r.id === state.report);
+            if (report) chips.push(chip('report', report.title));
+        }
+        el.chips.innerHTML = chips.length
+            ? chips.join('') +
+              '<button type="button" class="btn btn--ghost btn--sm" data-clear="all">Clear all</button>'
+            : '';
+    }
+
+    function chip(key, label) {
+        const text = label.length > 46 ? label.slice(0, 44) + '…' : label;
+        return '<button type="button" class="chip" data-clear="' + key + '">' +
+            OSAA.escapeHTML(text) +
+            '<span class="chip__x" aria-hidden="true">' + OSAA.icon('xmark') + '</span>' +
+            '<span class="visually-hidden">Remove this filter</span></button>';
+    }
+
+    function sourceCard(source, expand) {
+        const e = OSAA.escapeHTML;
+        const link = OSAA.safeURL(source.link);
+        const reportCount = source.reports.length;
+
+        const reportsHTML = source.reports.map(report => {
+            const reportLink = OSAA.safeURL(report.link);
+            return '<details class="provenance-report"' + (expand ? ' open' : '') + '>' +
+                '<summary>' +
+                  OSAA.icon('chevron-right', { className: 'chev' }) +
+                  '<span class="year-badge">' + e(report.year) + '</span>' +
+                  '<span class="provenance-report__title">' + e(report.title) + '</span>' +
+                  '<span class="count-badge">' + report.dataPoints.length + '</span>' +
+                '</summary>' +
+                '<div class="provenance-body">' +
+                  (reportLink
+                      ? '<p><a class="knowledge-product-link" href="' + e(reportLink) +
+                        '" target="_blank" rel="noopener">' +
+                        OSAA.icon('arrow-up-right-from-square') +
+                        'Open knowledge product<span class="visually-hidden"> — ' + e(report.title) +
+                        ' (opens in a new tab)</span></a></p>'
+                      : '<p><span class="knowledge-product-link is-missing">' +
+                        OSAA.icon('link-slash') +
+                        'No report link on file</span></p>') +
+                  '<ul class="point-list">' +
+                    report.dataPoints.map(p => pointHTML(p, report)).join('') +
+                  '</ul>' +
+                '</div></details>';
+        }).join('');
+
+        return '' +
+            '<article class="source-index-card' + (source.unattributed ? ' is-unattributed' : '') + '">' +
+              '<header class="source-index-head">' +
+                '<div class="source-index-title">' +
+                  '<span class="source-avatar" aria-hidden="true">' +
+                    e(source.name.charAt(0)) + '</span>' +
+                  '<div>' +
+                    '<h3>' + e(source.name) + '</h3>' +
+                    '<div class="source-badges">' +
+                      '<span class="badge badge-primary">' +
+                        OSAA.icon('file-lines') +
+                        reportCount + ' ' + OSAA.plural(reportCount, 'knowledge product') + '</span>' +
+                      '<span class="badge">' +
+                        OSAA.icon('chart-line') +
+                        source.dataPointCount + ' ' +
+                        OSAA.plural(source.dataPointCount, 'data point') + '</span>' +
+                      (source.sharedCount
+                          ? '<span class="badge badge-muted" title="Data points where this source ' +
+                            'is cited alongside others">' +
+                            OSAA.icon('users') +
+                            source.sharedCount + ' co-attributed</span>'
+                          : '') +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+                (link
+                    ? '<a class="source-home-link" href="' + e(link) + '" target="_blank" rel="noopener">' +
+                      '' + OSAA.icon('globe') + 'Source website' +
+                      '<span class="visually-hidden"> for ' + e(source.name) +
+                      ' (opens in a new tab)</span></a>'
+                    : '') +
+              '</header>' +
+
+              (source.unattributed
+                  ? '<p class="source-warning">' +
+                    OSAA.icon('circle-info') +
+                    '<span>These data points cite no named institution in the source record. ' +
+                    'They need a proper attribution before they can be traced.</span></p>'
+                  : '') +
+
+              attributionsHTML(source) +
+
+              '<div class="provenance-reports">' + reportsHTML + '</div>' +
+            '</article>';
+    }
+
+    /* Heavily reused sources such as the World Bank are cited two dozen
+       different ways. Showing them all inline buried the actual provenance,
+       so anything past a handful goes behind a disclosure. */
+    function attributionsHTML(source) {
+        const list = source.attributions;
+        if (list.length < 2) return '';
+
+        const codes = list.map(a => '<code>' + OSAA.escapeHTML(a) + '</code>').join(' ');
+
+        if (list.length <= 4) {
+            return '<p class="source-attributions">' +
+                '<strong>Cited in the reports as:</strong> ' + codes + '</p>';
+        }
+
+        return '<details class="disclosure">' +
+            '<summary>' + OSAA.icon('chevron-right', { className: 'chev' }) + '' +
+            'Cited ' + list.length + ' different ways in the reports</summary>' +
+            '<p class="source-attributions">' + codes + '</p></details>';
+    }
+
+    function pointHTML(point, report) {
+        const e = OSAA.escapeHTML;
+        const reference = window.SourceIndex.formatReference(point.attribution, point, report);
+        const link = OSAA.safeURL(point.link);
+
+        return '<li class="point">' +
+            '<div class="point__main">' +
+              '<span class="point__name">' + e(point.name) + '</span>' +
+              (point.value ? '<span class="point__value">' + e(point.value) + '</span>' : '') +
+            '</div>' +
+            (point.notes ? '<p class="point__notes">' + e(point.notes) + '</p>' : '') +
+            '<div class="point__meta">' +
+              (point.cluster
+                  ? '<span class="provenance-cluster cluster-' + e(point.cluster) + '">' +
+                    e(OSAA.clusterShort(point.cluster)) + '</span>'
+                  : '') +
+              (point.coSources.length
+                  ? '<span class="provenance-co">with ' + e(point.coSources.join(', ')) + '</span>'
+                  : '') +
+              (link
+                  ? '<a class="provenance-data-link" href="' + e(link) +
+                    '" target="_blank" rel="noopener">' +
+                    '' + OSAA.icon('database') + 'Dataset' +
+                    '<span class="visually-hidden"> for ' + e(point.name) +
+                    ' (opens in a new tab)</span></a>'
+                  : '') +
+              '<button type="button" class="copy-ref-btn" data-reference="' + e(reference) + '">' +
+                '' + OSAA.icon('quote-right') + 'Copy citation' +
+              '</button>' +
+            '</div></li>';
+    }
+
+    function copyReference(button) {
+        const text = button.getAttribute('data-reference');
+        const done = () => {
+            const original = button.innerHTML;
+            button.innerHTML = '' + OSAA.icon('check') + 'Copied';
+            button.classList.add('is-copied');
+            setTimeout(() => {
+                button.innerHTML = original;
+                button.classList.remove('is-copied');
+            }, 1600);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+        } else {
+            fallbackCopy(text, done);
+        }
+    }
+
+    function fallbackCopy(text, done) {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'absolute';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        try { document.execCommand('copy'); done(); } catch (e) { console.error('Copy failed', e); }
+        document.body.removeChild(area);
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+})();

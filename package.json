@@ -9,8 +9,9 @@
     "dev": "python3 -m http.server 8000",
     "build": "echo 'Static site - no build process needed'",
     "deploy": "git add . && git commit -m 'Deploy to GitHub Pages' && git push origin main",
-    "validate-json": "node -e \"console.log('Validating JSON files...'); try { JSON.parse(require('fs').readFileSync('data.json', 'utf8')); JSON.parse(require('fs').readFileSync('reports.json', 'utf8')); console.log('✅ All JSON files are valid'); } catch(e) { console.error('❌ JSON validation failed:', e.message); process.exit(1); }\"",
-    "test": "npm run validate-json"
+    "validate-json": "node scripts/validate.js",
+    "test": "node scripts/validate.js",
+    "validate": "node scripts/validate.js"
   },
   "keywords": [
     "un",

@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate catalog data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Catches the drift that used to go unnoticed: declared totals that no
+      # longer match the arrays, duplicate ids, unknown cluster keys, and
+      # curated indicatorId links pointing at entries that do not exist.
+      - name: Validate data.json and reports.json
+        run: npm run validate
+
+      - name: Check every script parses
+        run: for f in *.js scripts/*.js; do node --check "$f"; done
+
+      - name: Check for stale internal links
+        run: |
+          missing=0
+          for page in $(grep -ohE '(href|src)="[a-z0-9-]+\.(html|js|css)"' *.html \
+                        | sed -E 's/.*="([^"]+)".*/\1/' | sort -u); do
+            if [ ! -f "$page" ]; then
+              echo "::error::referenced file not found: $page"
+              missing=1
+            fi
+          done
+          exit $missing

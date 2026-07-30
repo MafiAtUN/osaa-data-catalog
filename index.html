@@ -25,21 +25,21 @@
                         <div class="stat-card">
                             <i class="fas fa-chart-line"></i>
                             <div class="stat-content">
-                                <h3>130+</h3>
+                                <h3 id="homeIndicatorCount">145</h3>
                                 <p>Indicators</p>
                             </div>
                         </div>
                         <div class="stat-card">
                             <i class="fas fa-file-alt"></i>
                             <div class="stat-content">
-                                <h3>8+</h3>
+                                <h3 id="homeReportCount">8</h3>
                                 <p>Reports</p>
                             </div>
                         </div>
                         <div class="stat-card">
                             <i class="fas fa-layer-group"></i>
                             <div class="stat-content">
-                                <h3>6</h3>
+                                <h3 id="homeClusterCount">6</h3>
                                 <p>Thematic Clusters</p>
                             </div>
                         </div>
@@ -233,9 +233,8 @@
         // Setup home page specific functionality
         function setupHomePageFunctionality() {
             // Load data
-            loadIndicators();
-            loadReports();
-            
+            loadHomeData();
+
             // Setup search functionality
             const homeSearchInput = document.getElementById('homeSearchInput');
             const homeSearchBtn = document.getElementById('homeSearchBtn');
@@ -254,26 +253,34 @@
             }
         }
 
-        // Load indicators using data loader
-        async function loadIndicators() {
+        // Load indicators and reports using data loader
+        async function loadHomeData() {
             try {
                 await window.dataLoader.loadAll();
                 window.indicators = window.dataLoader.getIndicators();
+                window.reports = window.dataLoader.getReports();
+                updateHomeStats();
             } catch (error) {
-                console.error('Error loading indicators:', error);
+                console.error('Error loading data:', error);
                 window.indicators = [];
+                window.reports = [];
             }
         }
 
-        // Load reports using data loader
-        async function loadReports() {
-            try {
-                await window.dataLoader.loadAll();
-                window.reports = window.dataLoader.getReports();
-            } catch (error) {
-                console.error('Error loading reports:', error);
-                window.reports = [];
-            }
+        // Keep the welcome stats in sync with the catalog data
+        function updateHomeStats() {
+            const stats = {
+                homeIndicatorCount: window.dataLoader.getIndicatorsCount(),
+                homeReportCount: window.dataLoader.getReportsCount(),
+                homeClusterCount: window.dataLoader.getClusters().length
+            };
+
+            Object.entries(stats).forEach(([id, count]) => {
+                const el = document.getElementById(id);
+                if (el && count > 0) {
+                    el.textContent = count;
+                }
+            });
         }
 
         // Handle home page search

@@ -10,9 +10,9 @@ This system serves two primary functions:
 
 ## 📊 Current Status
 
-- **8+ Reports** tracked with comprehensive data sources
-- **260+ Indicators** across all thematic areas
-- **50+ Data Sources** from international organizations
+- **8 Reports** tracked with comprehensive data sources
+- **145 Indicators** in the catalog, plus **168 report-level data points**
+- **47 Data Sources** from international organizations
 - **6 Thematic Clusters** covering Africa's development priorities
 
 ## 🏗️ Thematic Clusters
@@ -46,19 +46,19 @@ Advancing green growth, climate resilience, and renewable energy solutions.
 
 ## 📈 Tracked Reports
 
-1. **NEPAD 2025** - SDG Financing (30+ indicators)
-2. **NEPAD 2022** - COVID-19 Recovery (23+ indicators)
-3. **NEPAD 2024** - Debt Solutions (14+ indicators)
-4. **NEPAD 2023** - Development Paradoxes (16+ indicators)
-5. **CoC 2025** - Peace & Development (21+ indicators)
-6. **CoC 2022** - Governance & Conflict (19+ indicators)
-7. **CoC 2023** - Peace & Development (19+ indicators)
-8. **CoC 2024** - Migration & Justice (24+ indicators)
+1. **NEPAD 2025** - SDG Financing (31 indicators)
+2. **NEPAD 2022** - COVID-19 Recovery (24 indicators)
+3. **NEPAD 2024** - Debt Solutions (14 indicators)
+4. **NEPAD 2023** - Development Paradoxes (16 indicators)
+5. **CoC 2025** - Peace & Development (21 indicators)
+6. **CoC 2022** - Governance & Conflict (19 indicators)
+7. **CoC 2023** - Peace & Development (19 indicators)
+8. **CoC 2024** - Migration & Justice (24 indicators)
 
 ## 🛠️ Technical Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Data Storage**: JSON format (`data.js`, `reports-data.js`)
+- **Data Storage**: JSON format (`data.json`, `reports.json`), loaded at runtime by `data-loader.js`
 - **Hosting**: GitHub Pages
 - **Icons**: Font Awesome
 - **Architecture**: Multi-page with shared components
@@ -95,14 +95,18 @@ open http://localhost:8000
 ## 📝 Adding New Data
 
 ### For Reports:
-1. Add report data to `reports-data.js`
+1. Add the report object to the `reports` array in `reports.json`
 2. Include all indicators and sources used
-3. Update filter options in `reports.html`
+3. Bump `metadata.totalReports` and `metadata.lastUpdated`
+4. Update filter options in `reports.html`
 
 ### For Indicators:
-1. Add indicator data to `data.js`
-2. Ensure proper cluster classification
+1. Add the indicator object to the `indicators` array in `data.json`
+2. Ensure proper cluster classification (one of the six `metadata.clusters` values)
 3. Include complete metadata and source links
+4. Bump `metadata.totalIndicators` and `metadata.lastUpdated`
+
+After either change, run `npm test` to validate both JSON files parse.
 
 ## 🌐 Data Sources
 
